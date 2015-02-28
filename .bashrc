@@ -1,4 +1,11 @@
 # Will's bashrc for excellent readability and personality!
+platform='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+   platform='linux'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+   platform='osx'
+fi
 
 export PS1="\[\e[00;36m\]\u\[\e[0m\]\[\e[00;37m\]@\[\e[0m\]\[\e[00;32m\]\h\[\e[0m\]\[\e[00;37m\]:\w \[\e[0m\]\[\e[00;35m\]>\[\e[0m\]\[\e[00;37m\] \[\e[0m\]"
 
@@ -81,4 +88,10 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-alias ls="ls -G"
+
+# if statement for ls color option
+if [[ $platform == 'linux' ]]; then
+   alias ls='ls --color=auto'
+elif [[ $platform == 'osx' ]]; then
+   alias ls='ls -G'
+fi
