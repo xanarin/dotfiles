@@ -2,7 +2,7 @@
  
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files=".vimrc .vim .bashrc"        # list of files/folders to symlink in homedir
+files=".ackrc .vimrc .vim .bashrc"        # list of files/folders to symlink in homedir
  
 ##########
  
