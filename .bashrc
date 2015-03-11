@@ -92,6 +92,7 @@ fi
 # if statement for ls color option
 if [[ $platform == 'linux' ]]; then
    alias ls='ls --color=auto'
+   alias ack='ack-grep'
 elif [[ $platform == 'osx' ]]; then
    alias ls='ls -G'
 fi
