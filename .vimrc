@@ -181,6 +181,9 @@ nmap <leader>m :make!<cr>
 " Run test program
 nmap <leader>rt :!sh ./run.sh<cr>
 
+" Run node on current script
+nmap <leader>ns :! node %<cr>
+
 
 """"""""""""""""""
 " Plugin Config
