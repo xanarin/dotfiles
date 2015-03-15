@@ -20,6 +20,7 @@ Plugin 'Shutnik/jshint2.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
+Plugin 'burnettk/vim-angular'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -184,6 +185,8 @@ nmap <leader>rt :!sh ./run.sh<cr>
 " Run node on current script
 nmap <leader>ns :! node %<cr>
 
+" Map build and install for Pebbble Dev
+nmap <leader>pb :! pebble build && pebble install --emulator basalt <cr>
 
 """"""""""""""""""
 " Plugin Config
@@ -202,3 +205,6 @@ map <leader>nn :NERDTreeToggle<cr>
 " VimAirline plugin
 let g:airline_theme='sol'
 " let g:airline_section_z = 'WC:%{WordCount()}'
+
+" Syntastic plugin
+let g:syntastic_c_check_header = 1
