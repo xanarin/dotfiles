@@ -178,6 +178,9 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
+" Create new line without entering insert
+nmap <cr> o<Esc>
+
 " Run Make
 nmap <leader>m :make!<cr>
 
