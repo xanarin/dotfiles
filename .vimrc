@@ -187,6 +187,7 @@ nmap <leader>ns :! node %<cr>
 
 " Map build and install for Pebbble Dev
 nmap <leader>pb :! pebble build && pebble install --emulator basalt <cr>
+nmap <leader>pa :! pebble build && pebble install --emulator aplite <cr>
 
 """"""""""""""""""
 " Plugin Config
