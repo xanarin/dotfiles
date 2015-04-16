@@ -21,6 +21,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'burnettk/vim-angular'
+Plugin 'L9'
+Plugin 'vim-scripts/FuzzyFinder'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -176,6 +178,9 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
+" Create new line without entering insert
+nmap <cr> o<Esc>
+
 " Run Make
 nmap <leader>m :make!<cr>
 
@@ -187,6 +192,7 @@ nmap <leader>ns :! node %<cr>
 
 " Map build and install for Pebbble Dev
 nmap <leader>pb :! pebble build && pebble install --emulator basalt <cr>
+nmap <leader>pa :! pebble build && pebble install --emulator aplite <cr>
 
 """"""""""""""""""
 " Plugin Config
@@ -204,7 +210,13 @@ map <leader>nn :NERDTreeToggle<cr>
 
 " VimAirline plugin
 let g:airline_theme='sol'
-" let g:airline_section_z = 'WC:%{WordCount()}'
+let g:airline_powerline_fonts = 1
 
 " Syntastic plugin
 let g:syntastic_c_check_header = 1
+
+" Fuzzy Finder
+nmap <leader>f :FufFile<cr>
+
+" Fugitive (Git Wrapper)
+nmap <leader>gs :Gstatus<cr>
