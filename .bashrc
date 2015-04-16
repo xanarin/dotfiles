@@ -96,3 +96,6 @@ if [[ $platform == 'linux' ]]; then
 elif [[ $platform == 'osx' ]]; then
    alias ls='ls -G'
 fi
+
+# set vim as default editor
+export EDITOR=vim
