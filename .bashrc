@@ -102,3 +102,6 @@ export PATH=$HOME/local/bin:$PATH
 
 # set vim as default editor
 export EDITOR=vim
+
+# alias ping 8.8.8.8 for ease of use
+alias 'ping8'='ping 8.8.8.8'
