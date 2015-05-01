@@ -96,3 +96,6 @@ if [[ $platform == 'linux' ]]; then
 elif [[ $platform == 'osx' ]]; then
    alias ls='ls -G'
 fi
+
+# export path for manual installation of nodeJS
+export PATH=$HOME/local/bin:$PATH
