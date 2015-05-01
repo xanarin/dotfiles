@@ -99,3 +99,6 @@ fi
 
 # export path for manual installation of nodeJS
 export PATH=$HOME/local/bin:$PATH
+
+# set vim as default editor
+export EDITOR=vim
