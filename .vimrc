@@ -23,6 +23,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'burnettk/vim-angular'
 Plugin 'L9'
 Plugin 'vim-scripts/FuzzyFinder'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'scrooloose/nerdcommenter'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -220,3 +222,7 @@ nmap <leader>f :FufFile<cr>
 
 " Fugitive (Git Wrapper)
 nmap <leader>gs :Gstatus<cr>
+
+" NERD Commenter
+nmap <leader>/ :NERDComToggleComment<cr>
+
