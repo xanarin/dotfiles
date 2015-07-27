@@ -1,6 +1,6 @@
 Will Sloan's dotfiles
 ---
-Currently only vimrc and bashrc files have been added, but that's a pretty good start compared to... Well nothing
+Lots and lots of many wonderful dotfiles that will make your machine work just like mine!
 
 ## Dependencies
 * [Vundle] (https://github.com/gmarik/vundle)
@@ -15,5 +15,5 @@ Currently only vimrc and bashrc files have been added, but that's a pretty good 
 
 ## License
 
-Copyright (c) 2013 @sloan-848, Will Sloan.
+Copyright (c) 2015 @sloan-848, Will Sloan.
 Licensed under the MIT license.
