@@ -24,6 +24,7 @@ Plugin 'burnettk/vim-angular'
 Plugin 'L9'
 Plugin 'vim-scripts/FuzzyFinder'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'chriskempson/base16-vim'
 Plugin 'scrooloose/nerdcommenter'
 
 " All of your Plugins must be added before the following line
@@ -66,7 +67,11 @@ set incsearch
 " Enable syntax highlighting
 syntax enable
 
-colorscheme desert
+
+set t_Co=256
+set background=dark
+
+colorscheme base16-eighties
 
 set encoding=utf8
 
