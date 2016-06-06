@@ -16,7 +16,6 @@ Plugin 'gmarik/Vundle.vim'
 " Buffer explorer import
 Plugin 'vim-scripts/bufexplorer.zip'
 Plugin 'scrooloose/syntastic'
-Plugin 'Shutnik/jshint2.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
@@ -25,7 +24,6 @@ Plugin 'L9'
 Plugin 'vim-scripts/FuzzyFinder'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'chriskempson/base16-vim'
-Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-airline/vim-airline-themes'
 
 " All of your Plugins must be added before the following line
