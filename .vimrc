@@ -70,7 +70,7 @@ syntax enable
 set t_Co=256
 set background=dark
 
-colorscheme base16-eighties
+"colorscheme base16-eighties
 
 set encoding=utf8
 
