@@ -58,7 +58,7 @@ cowspeakfortune() {
 #
 
 # path to your oh-my-zsh installation.
-export ZSH=/Users/will/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # set name of the theme to load.
 ZSH_THEME="maran"
@@ -111,9 +111,6 @@ source $ZSH/oh-my-zsh.sh
 export GOPATH=$HOME/Documents/Developer/go
 
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$GOPATH/bin:/Users/will/local/bin:/usr/local/git/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/local/bin:/opt/local/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/texbin:/opt/metasploit-framework/bin/:$PATH"
-
-# set up completion for aws
-source /usr/local/share/zsh/site-functions/_aws
 
 # make sure we're always editing in vim #vimmasterrace
 export EDITOR='vim'
