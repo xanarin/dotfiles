@@ -18,40 +18,38 @@ push() {
   curl -s -F "token=afgq15q22847cg8e1xjpmjfug5ran3" -F "user=u2f4smknjr4z5mhc3xque2jzp7ap7n" -F "title=RandomServer" -F "message=$1" https://api.pushover.net/1/messages.json
 }
 
-# print some wisdom by our favorite horse
+# print some wisdom by our favorite animals
 cowspeakfortune() {
-	h=`date +%H`
-	# If early morning (middle of the night)
-	if [ $h -lt 06 ]
-	then
-			cowargs="-s"
-	# If mid to late morning
-	elif [ $h -lt 12 ]
-	then
-			cowargs="-t"
-	# If early afternoon
-	elif [ $h -lt 16 ]
-	then
-			cowargs=""
-	# If mid morning
-	elif [ $h -lt 20 ]
-	then
-			cowargs="-g"
-	# If mid morning
-	elif [ $h -lt 24 ]
-	then
-			cowargs="-b"
-	# If we missed a case
-	else
-			cowargs="-d"
-	fi
-
-	# Now print motd
+  h=`date +%H`
+  # If early morning (middle of the night)
+  if [ $h -lt 06 ]
+  then
+      cowargs="elephant"
+  # If mid to late morning
+  elif [ $h -lt 12 ]
+  then
+      cowargs="moose"
+  # If early afternoon
+  elif [ $h -lt 16 ]
+  then
+      cowargs="kitty"
+  # If mid morning
+  elif [ $h -lt 20 ]
+  then
+      cowargs="vader"
+  # If late night
+  elif [ $h -lt 24 ]
+  then
+      cowargs="dragon-and-cow"
+  # If we missed a case
+  else
+      cowargs="-d"
+  fi
+  # Now print motd
   echo $fg[cyan]
-  fortune -s | cowsay $cowargs
-	echo ""
+  fortune -s | cowsay -f $cowargs
+  echo ""
 }
-
 
 #
 ## Oh-My-Zsh Configuration

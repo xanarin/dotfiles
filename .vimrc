@@ -186,18 +186,9 @@ set expandtab
 " Create new line without entering insert
 nmap <cr> o<Esc>
 
-" Run Make
-nmap <leader>m :make!<cr>
-
-" Run test program
-nmap <leader>rt :!sh ./run.sh<cr>
-
-" Run node on current script
-nmap <leader>ns :! node %<cr>
-
-" Map build and install for Pebbble Dev
-nmap <leader>pb :! pebble build && pebble install --emulator basalt <cr>
-nmap <leader>pa :! pebble build && pebble install --emulator aplite <cr>
+" Go around to errors
+nmap <leader>en :cnext<cr>
+nmap <leader>ep :cprev<cr>
 
 """"""""""""""""""
 " Plugin Config
@@ -228,4 +219,11 @@ nmap <leader>gs :Gstatus<cr>
 
 " NERD Commenter
 nmap <leader>/ :NERDComToggleComment<cr>
+
+" Go-vim
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+au FileType go nmap <leader>l <Plug>(go-lint)
 
