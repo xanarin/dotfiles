@@ -168,9 +168,6 @@ map <leader>pp :setlocal paste!<cr>
 " Fast Saving
 nmap <leader>w :w!<cr>
 
-" Add closing curly bracket
-inoremap { {<CR><BS><BS>}<Esc>ko
-
 " Hard quit
 nmap <leader>qq :q!<cr>
 
