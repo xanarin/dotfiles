@@ -122,6 +122,8 @@ alias grep="grep -i"
 alias watch="watch -n1"
 alias ls="ls --color"
 
+alias xclip="xclip -selection c"
+
 #
 ## finalizer
 #
@@ -132,3 +134,4 @@ if hash fortune 2>/dev/null && hash cowsay 2>/dev/null; then
 else
 		echo "You do not have fortune or cowspeak installed, sorry"
 fi
+if [ "$TMUX" = "" ]; then tmux; fi

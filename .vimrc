@@ -24,6 +24,8 @@ Plugin 'vim-scripts/FuzzyFinder'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'chriskempson/base16-vim'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'nvie/vim-flake8'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -69,7 +71,10 @@ syntax enable
 set t_Co=256
 set background=dark
 
-"colorscheme base16-eighties
+colorscheme base16-eighties
+
+" Preserve Transparency on URxvt
+hi Normal ctermbg=none
 
 set encoding=utf8
 
@@ -162,6 +167,7 @@ map <leader>s? z=
 " Quickly open a buffer for scribble
 map <leader>` :split ~/buffer<cr>
 
+
 " Toggle paste mode
 map <leader>pp :setlocal paste!<cr>
 
@@ -223,4 +229,16 @@ au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
 au FileType go nmap <leader>l <Plug>(go-lint)
+
+
+" Python
+au BufNewFile,BufRead *.py
+    \set tabstop=4
+    \set softtabstop=4
+    \set shiftwidth=4
+    \set textwidth=79
+    \set expandtab
+    \set autoindent
+    \set fileformat=unix
+let python_highlight_all=1
 
