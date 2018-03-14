@@ -31,17 +31,17 @@ main() {
   fi
 
   hash nvim >/dev/null 2>&1 || {
-    printf "${RED}Error: neovim is not installed${NORMAL}"
+    printf "${RED}Error: neovim is not installed${NORMAL}\n"
     exit 1
   }
 
   hash tmux >/dev/null 2>&1 || {
-    printf "${RED}Error: tmux is not installed${NORMAL}"
+    printf "${RED}Error: tmux is not installed${NORMAL}\n"
     exit 1
   }
 
   hash xsel >/dev/null 2>&1 || {
-    printf "${RED}Error: xsel is not installed${NORMAL}"
+    printf "${RED}Error: xsel is not installed${NORMAL}\n"
     exit 1
   }
 }
