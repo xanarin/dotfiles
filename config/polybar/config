@@ -1,0 +1,231 @@
+[bar/top]
+width = 100%
+height = 34
+
+#background = #7f1d1f21
+background = #c02d2d2d
+foreground = #d3d0c8
+
+green  = #99cc99
+yellow = #ffcc66
+red    = #f2777a
+blue   = #6699cc
+
+line-color = ${bar/top.background}
+line-size = 16
+
+spacing = 1
+padding-right = 5
+padding-left = 5
+module-margin = 4
+
+font-0 = "Source Code Pro:size=14;2"
+font-1 = MaterialIcons:size=14;4
+font-2 = "EmojiOne Color:size=18;2"
+#font-2 = "Noto Emoji:size=18;2" <- If color emoji support ever gets fixed
+font-3 = "SauceCodePro Nerd Font:size=18;3"
+
+modules-left = i3 mpd
+modules-right = memory cpu wired-network date
+
+[module/cpu]
+type = internal/cpu
+interval = 0.5
+format = <ramp-coreload>
+label = CPU
+
+ramp-coreload-0 = ▁
+ramp-coreload-0-font = 2
+ramp-coreload-0-foreground = ${bar/top.green}
+ramp-coreload-1 = ▂
+ramp-coreload-1-font = 2
+ramp-coreload-1-foreground = ${bar/top.green}
+ramp-coreload-2 = ▃
+ramp-coreload-2-font = 2
+ramp-coreload-2-foreground = ${bar/top.green}
+ramp-coreload-3 = ▄
+ramp-coreload-3-font = 2
+ramp-coreload-3-foreground = ${bar/top.green}
+ramp-coreload-4 = ▅
+ramp-coreload-4-font = 2
+ramp-coreload-4-foreground = ${bar/top.yellow}
+ramp-coreload-5 = ▆
+ramp-coreload-5-font = 2
+ramp-coreload-5-foreground = ${bar/top.yellow}
+ramp-coreload-6 = ▇
+ramp-coreload-6-font = 2
+ramp-coreload-6-foreground = ${bar/top.red}
+ramp-coreload-7 = █
+ramp-coreload-7-font = 2
+ramp-coreload-7-foreground = ${bar/top.red}
+
+[module/date]
+type = internal/date
+date = %A, %d %B %Y  %H:%M
+
+[module/memory]
+type = internal/memory
+format = <bar-used>
+label = RAM
+
+bar-used-width = 14
+bar-used-foreground-0 = ${bar/top.green}
+bar-used-foreground-1 = ${bar/top.yellow}
+bar-used-foreground-2 = ${bar/top.red}
+bar-used-indicator = ─
+bar-used-indicator-font = 6
+bar-used-indicator-foreground = #444444
+bar-used-fill = ─
+bar-used-fill-font = 6
+bar-used-empty = ─
+bar-used-empty-font = 6
+bar-used-empty-foreground = #444444
+
+[module/mpd]
+type = internal/mpd
+format-online = <icon-prev> <toggle> <icon-next>  <icon-repeat> <icon-random>  <bar-progress> <label-time>  <label-song>
+
+icon-play = 
+icon-pause = 
+icon-stop = 
+icon-prev = 
+icon-next = 
+icon-random = 
+icon-repeat = 
+
+toggle-on-foreground =
+toggle-off-foreground = #55
+
+bar-progress-width = 45
+bar-progress-format = %{A4:mpdseek+2: A5:mpdseek-2:}%fill%%indicator%%empty%%{A A}
+bar-progress-indicator = |
+bar-progress-indicator-foreground = #ff
+bar-progress-indicator-font = 3
+bar-progress-fill = ─
+bar-progress-fill-foreground = #bb
+bar-progress-fill-font = 3
+bar-progress-empty = ─
+bar-progress-empty-font = 3
+bar-progress-empty-foreground = #44
+
+[module/wired-network]
+type = internal/network
+interface = enp0s31f6
+interval = 0.5
+
+#label-connected = %{F#6699cc} 🏠 %local_ip% %{F#66cccc} 🚽 %downspeed:% %{F#cc99cc} 📡 %upspeed:%
+label-connected = %{F#6699cc} 📡 %local_ip%
+label-disconnected = 🤔 Waiting....
+label-disconnected-foreground = ${bar/top.red}
+
+[module/powermenu]
+type = custom/menu
+
+format-padding = 4
+
+label-open = 
+label-close = 
+
+menu-0-0 = Reboot
+menu-0-0-foreground = #fba922
+menu-0-0-exec = menu_open-1
+menu-0-1 = Power off
+menu-0-1-foreground = #fba922
+menu-0-1-exec = menu_open-2
+
+menu-1-0 = Cancel
+menu-1-0-foreground = #fba922
+menu-1-0-exec = menu_open-0
+menu-1-1 = Reboot
+menu-1-1-foreground = #fba922
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = Power off
+menu-2-0-foreground = #fba922
+menu-2-0-exec = sudo poweroff
+menu-2-1 = Cancel
+menu-2-1-foreground = #fba922
+menu-2-1-exec = menu_open-0
+
+[module/clock]
+type = internal/date
+interval = 2
+date = %%{F#999}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
+
+[module/i3]
+type = internal/i3
+
+; Only show workspaces defined on the same output as the bar
+;
+; Useful if you want to show monitor specific workspaces
+; on different bars
+;
+; Default: false
+pin-workspaces = true
+
+; This will split the workspace name on ':'
+; Default: false
+strip-wsnumbers = true
+
+; Sort the workspaces by index instead of the default
+; sorting that groups the workspaces by output
+; Default: false
+index-sort = true
+
+; Create click handler used to focus workspace
+; Default: true
+enable-click = false
+
+; Create scroll handlers used to cycle workspaces
+; Default: true
+enable-scroll = false
+
+; Wrap around when reaching the first/last workspace
+; Default: true
+wrapping-scroll = false
+
+; Set the scroll cycle direction 
+; Default: true
+reverse-scroll = false
+
+; Use fuzzy (partial) matching on labels when assigning 
+; icons to workspaces
+; Example: code;♚ will apply the icon to all workspaces 
+; containing 'code' in the label
+; Default: false
+fuzzy-match = true
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+
+;ws-icon-0 = 1;
+;ws-icon-1 = 2;
+;ws-icon-2 = 3;
+;ws-icon-3 = 4;
+;ws-icon-4 = 5;
+;ws-icon-default = 
+
+label-focused = %icon%
+label-focused-foreground = #ffffff
+label-focused-background = #3f3f3f
+label-focused-padding = 2
+
+label-unfocused = %icon%
+label-unfocused-padding = 2
+
+label-visible = %icon%
+label-visible-padding = 2
+
+label-urgent = %icon%
+label-urgent-foreground = #000000
+label-urgent-background = #bd2c40
+label-urgent-padding = 2
+
+; vim:ft=dosini
