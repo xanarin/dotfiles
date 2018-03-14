@@ -24,7 +24,6 @@
     ~/.radare2rc: radare2rc
     ~/.scripts: scripts
     ~/.tmux.conf: tmux.conf
-    ~/.vimrc: vimrc
     ~/.zshrc: zshrc
     ~/.config/mimeapps.list: config/mimeapps.list
     ~/.config/cava: config/cava
