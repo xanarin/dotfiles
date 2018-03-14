@@ -13,6 +13,7 @@
 
 - link:
     ~/.bashrc: bashrc
+    ~/.dir_colors: dir_colors
     ~/.gitconfig: gitconfig
     ~/.muttrc: muttrc
     ~/.offlineimaprc: offlineimaprc
