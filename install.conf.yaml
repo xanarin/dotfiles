@@ -1,0 +1,39 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+    shell:
+      stderr: true
+
+- shell:
+    - [./check_deps.sh, Check that all dependent programs are installed]
+
+- clean: ['~']
+
+- link:
+    ~/.bashrc: bashrc
+    ~/.gitconfig: gitconfig
+    ~/.muttrc: muttrc
+    ~/.offlineimaprc: offlineimaprc
+    ~/.offlineimap/ccsw_pass.gpg: offlineimap/ccsw_pass.gpg
+    ~/.offlineimap/macros.py: offlineimap/macros.py
+    ~/.radare2rc: radare2rc
+    ~/.tmux.conf: tmux.conf
+    ~/.vimrc: vimrc
+    ~/.zshrc: zshrc
+    ~/.config/cava: config/cava
+    ~/.config/compton: config/compton
+    ~/.config/dunst: config/dunst
+    ~/.config/i3: config/i3
+    ~/.config/nvim: config/nvim
+    ~/.config/polybar: config/polybar
+
+- shell: 
+    - 
+      # If Vundle is already present don't kill the install
+      command: git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim || exit 0
+      description: Install Vundle for neovim
+      stderr: false
+    - [nvim +PluginInstall +qall, Install neovim plugins]
+    - [./oh_my_zsh_install.sh, Install Oh My ZSH]
+
