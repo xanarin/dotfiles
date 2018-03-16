@@ -1,8 +1,9 @@
 [general]
 ui = ttyui
-accounts = CCSW
+accounts = CCSW, HOME2
 fsync = False
 pythonfile = ~/.offlineimap/macros.py
+maxsyncaccounts = 2
 
 [Account CCSW]
 localrepository = CCSW-Local
@@ -23,6 +24,39 @@ maxconnections = 1
 type = Gmail
 remoteuser = wsloan@cc-sw.com
 remotepasseval = mailpasswd("ccsw")
+ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+realdelete = no
+nametrans = lambda folder: {'[Gmail]/Drafts':       'drafts',
+                            '[Gmail]/Sent Mail':    'sent',
+                            '[Gmail]/Starred':      'flagged',
+                            '[Gmail]/Trash':        'trash',
+                            }.get(folder, folder)
+
+folderfilter = lambda folder: folder not in ['[Gmail]/Trash',
+                                             '[Gmail]/Important',
+                                             '[Gmail]/All Mail',
+                                             ]
+
+[Account HOME2]
+localrepository = HOME2-Local
+remoterepository = HOME2-Remote
+
+[Repository HOME2-Local]
+type = Maildir
+localfolders = .mail/home2
+nametrans = lambda folder: {'drafts':        '[Gmail]/Drafts',
+                            'sent':          '[Gmail]/Sent Mail',
+                            'flagged':       '[Gmail]/Starred',
+                            'trash':         '[Gmail]/Trash',
+                           }.get(folder, folder)
+
+
+[Repository HOME2-Remote]
+maxconnections = 1
+type = Gmail
+remoteuser = will.sloan2@gmail.com
+remotepasseval = mailpasswd("home2")
 ssl = yes
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 realdelete = no

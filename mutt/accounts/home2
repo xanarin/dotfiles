@@ -1,0 +1,22 @@
+# Default inbox.
+set spoolfile = "+home2/INBOX"
+
+# Mailboxes to show in the sidebar.
+mailboxes +home2/INBOX \
+          +home2/archive \
+          +home2/sent \
+          +home2/drafts
+
+# Other special folders.
+set mbox      = "+home2/archive"
+set postponed = "+home2/drafts"
+
+# Compose View Options -------------------------------
+set realname = "Will Sloan"          # who am i?
+set envelope_from                    # which from?
+set from     = "will.sloan2@gmail.com"
+
+# SMTP ------------------------------
+set smtp_url = "smtps://will.sloan2@smtp.gmail.com:465/"
+source "gpg --quiet -d ~/.mutt/home2_pass.gpg |"
+set ssl_force_tls = yes

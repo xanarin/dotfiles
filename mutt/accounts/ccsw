@@ -1,0 +1,22 @@
+# Default inbox.
+set spoolfile = "+ccsw/INBOX"
+
+# Mailboxes to show in the sidebar.
+mailboxes +ccsw/INBOX \
+          +ccsw/archive \
+          +ccsw/sent \
+          +ccsw/drafts
+
+# Other special folders.
+set mbox      = "+ccsw/archive"
+set postponed = "+ccsw/drafts"
+
+# Compose View Options -------------------------------
+set realname = "Will Sloan"          # who am i?
+set envelope_from                    # which from?
+set from     = "wsloan@cc-sw.com"
+
+# SMTP ------------------------------
+set smtp_url = "smtps://wsloan@cc-sw.com@smtp.gmail.com:465/"
+source "gpg --quiet -d ~/.mutt/ccsw_pass.gpg |"
+set ssl_force_tls = yes

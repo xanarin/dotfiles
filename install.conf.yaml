@@ -17,7 +17,6 @@
     ~/.gitconfig: gitconfig
     ~/.muttrc: muttrc
     ~/.offlineimaprc: offlineimaprc
-    ~/.offlineimap/ccsw_pass.gpg: offlineimap/ccsw_pass.gpg
     ~/.offlineimap/macros.py: offlineimap/macros.py
     ~/.radare2rc: radare2rc
     ~/.scripts: scripts
@@ -32,6 +31,8 @@
     ~/.config/mimeo: config/mimeo
     ~/.config/nvim: config/nvim
     ~/.config/polybar: config/polybar
+    ~/.mutt/accounts: mutt/accounts
+    ~/.mutt/mailcap: mutt/mailcap
 
 - shell: 
     - 

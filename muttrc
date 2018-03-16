@@ -27,7 +27,7 @@ set sidebar_delim_chars = '/.'
 set sidebar_visible = yes
 set sidebar_width   = 16
 color sidebar_new color221 color233
-set sidebar_short_path = yes
+set sidebar_short_path = no
 
 # Status Bar -----------------------------------------
 set status_chars  = " *%A"
@@ -43,16 +43,20 @@ hdr_order from: to: cc: date: subject:  # and in this order
 
 # Default inbox.
 set spoolfile = "+ccsw/INBOX"
+source ~/.mutt/accounts/ccsw
 
 # Mailboxes to show in the sidebar.
 mailboxes +ccsw/INBOX \
-          +ccsw/archive \
           +ccsw/sent \
           +ccsw/drafts \
+          +ccsw/archive \
+          +home2/INBOX \
+          +home2/sent \
+          +home2/drafts \
+          +home2/archive \
 
-# Other special folders.
-set mbox      = "+ccsw/archive"
-set postponed = "+ccsw/drafts"
+folder-hook ccsw/* source ~/.mutt/accounts/ccsw
+folder-hook home2/* source ~/.mutt/accounts/home2
 
 # Index View Options ---------------------------------
 set date_format = "%m/%d"
@@ -134,14 +138,6 @@ set reverse_name                     # reply as whomever it was to
 set include                          # include message in replies
 set forward_quote                    # include message in forwards
 set editor = "vim"        # Use terminal Vim to compose email.
-
-set from     = "wsloan@cc-sw.com"
-unset record
-
-# SMTP ------------------------------
-set smtp_url = "smtps://wsloan@cc-sw.com@smtp.gmail.com:465/"
-source "gpg -d ~/.mutt/ccsw_pass.gpg |"
-set ssl_force_tls = yes
 
 ## mutt colors
 

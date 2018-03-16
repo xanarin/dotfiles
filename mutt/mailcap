@@ -1,0 +1,10 @@
+# Copy files to /tmp/mutt, then open them in the background with xdg
+application/*; mkdir -p /tmp/mutt \; cp %s /tmp/mutt \; mimeo /tmp/mutt/$(basename %s) &
+image/*; mkdir -p /tmp/mutt \; cp %s /tmp/mutt \; mimeo /tmp/mutt/$(basename %s) &
+
+# Open HTML files in w3m
+text/html; w3m -I %{charset} -T text/html; copiousoutput;
+
+# Open text files in vim
+text/*; vim -R -- '%s'; needsterminal
+
