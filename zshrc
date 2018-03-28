@@ -36,8 +36,8 @@ push() {
 
 open() {
   zsh -c "
-    xdg-open \"$1\" &
-    disown xdg-open
+    mimeo \"$1\" &
+    disown mimeo
   "
 }
 
@@ -217,7 +217,7 @@ alias view="vim -R"
 alias l="less"
 
 # Automatically give password to weechat
-alias weechat="WEECHAT_PASSPHRASE=`gpg --quiet --batch -d $HOME/.weechat/secret_pass.gpg` weechat"
+alias weechat="WEECHAT_PASSPHRASE=`cat $HOME/.weechat/secret_pass2.txt` weechat"
 
 # Dircolors
 eval `dircolors -b $HOME/.dir_colors`

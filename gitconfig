@@ -1,6 +1,7 @@
 [user]
 	name = Will Sloan
 	email = wsloan@cc-sw.com
+	signingkey = A42BFF7420B37A9F90DB6DB811C187BBE313FBAC
 [push]
 	default = simple
 [alias]
@@ -20,3 +21,5 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+[commit]
+	gpgsign = true

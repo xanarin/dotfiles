@@ -10,6 +10,7 @@ open_mattermost "%U"
 feh %U
   ^https?://.*\.png$
   ^https?://.*\.jpg$
+  ^https?://.*\.jpeg$
 
 strip_markdown_links "%U"
   ^https?://.*\)\.?$
