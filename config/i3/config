@@ -3,7 +3,7 @@
 ### Variables
 #
 # Alt Key.
-set $mod Mod1
+set $mod Mod4
 # Home row direction keys, like vim
 set $left h
 set $down j
@@ -178,7 +178,7 @@ bindsym XF86AudioPrev exec mpc prev
 bindsym XF86AudioRaiseVolume exec mpc volume +5
 bindsym XF86AudioLowerVolume exec mpc volume -5
 
-bindsym XF86AudioStop exec $locker
+bindsym Home exec $locker
 
 # Start top bar
 exec --no-startup-id /usr/bin/polybar top &
