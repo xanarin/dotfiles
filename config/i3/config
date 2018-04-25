@@ -178,7 +178,7 @@ bindsym XF86AudioPrev exec mpc prev
 bindsym XF86AudioRaiseVolume exec mpc volume +5
 bindsym XF86AudioLowerVolume exec mpc volume -5
 
-bindsym Home exec $locker
+bindsym $mod+Escape exec $locker
 
 # Start top bar
 exec --no-startup-id /usr/bin/polybar top &
