@@ -1,5 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/home/will/Documents/Sorex/Macrodon/macrodon/android'
-let g:netrw_dirhist_2='/home/will/Documents/Sorex/Roboratus/roboratus/app/build'
-let g:netrw_dirhist_3='/home/will/.offlineimap'
+let g:netrw_dirhist_cnt =0

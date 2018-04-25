@@ -8,7 +8,7 @@ if ( [ $TERM = "linux" ] ); then
 	exit
 fi
 
-# If we're not inside of a tmux instance, start one
+## If we're not inside of a tmux instance, start one
 if [ "$TMUX" = "" ]; then
     tmux
     exit
@@ -17,17 +17,6 @@ fi
 #
 ## User-defined functions
 #
-
-# add colored manpages (temporarily disabled on Arch Linux)
-#man() {
-    #env \
-        #LESS_TERMCAP_md=$'\e[1;36m' \ LESS_TERMCAP_me=$'\e[0m' \
-        #LESS_TERMCAP_se=$'\e[0m' \
-        #LESS_TERMCAP_so=$'\e[1;40;92m' \
-        #LESS_TERMCAP_ue=$'\e[0m' \
-        #LESS_TERMCAP_us=$'\e[1;32m' \
-        #man "$@"
-#}
 
 # add push notifications over Pushover
 push() {
@@ -165,6 +154,7 @@ export PATH="$PATH:$HOME/Documents/Virtex-VM/bin"
 
 # Go workspace path
 export GOPATH="$HOME/Documents/golang"
+
 # Add Go bin to path
 export PATH="$PATH:$GOPATH/bin"
 
@@ -176,10 +166,6 @@ export CMAKE_PREFIX_PATH=/opt/Qt/5.9/gcc_64
 
 # Set fake "window manager" to make IDA inherit gtk+2 theme
 export XDG_CURRENT_DESKTOP=gnome
-
-# Path for python virtualenvwrapper
-export WORKON_HOME=$HOME/.venv
-source /usr/bin/virtualenvwrapper.sh
 
 # Import gitlab ssh key
 ssh-add ~/.ssh/keys/gitlab 2> /dev/null
@@ -194,14 +180,13 @@ export MANPAGER="nvim -c 'set ft=man' -"
 alias dusort="du -sh * | sort -h"
 alias utime="date +%s"
 alias ipecho="curl ipecho.net/plain"
-alias sourcez="source ~/.zshrc"
-alias grep="grep -i --color=auto"
+alias grep="grep --color=auto"
 alias watch="watch -n1"
 alias ls="ls --color -l"
 alias diff="colordiff"
 alias ffprobe="ffprobe -hide_banner"
 alias ffmpeg="ffmpeg -hide_banner"
-alias sed="sed -r"
+alias sed="sed -E"
 
 alias music="ncmpcpp"
 # Linux-specific keyboard speed command
@@ -227,6 +212,11 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Zsh Autocompletion
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# If encrypted Gitlab API token exists, source its contents
+if [ -f $HOME/.gitlab.gpg ]; then
+    source <(gpg --quiet --decrypt $HOME/.gitlab.gpg)
+fi
 
 
 #
