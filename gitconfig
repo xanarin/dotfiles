@@ -1,7 +1,7 @@
 [user]
 	name = Will Sloan
-	email = wsloan@cc-sw.com
-	signingkey = A42BFF7420B37A9F90DB6DB811C187BBE313FBAC
+	email = will@848.productions
+	signingkey = 6D0268E988F46E057A1EF486CDA406CAFEF634D6
 [push]
 	default = simple
 [alias]
