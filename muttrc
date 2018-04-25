@@ -49,14 +49,18 @@ source ~/.mutt/accounts/ccsw
 mailboxes +ccsw/INBOX \
           +ccsw/sent \
           +ccsw/drafts \
-          +ccsw/archive \
           +home2/INBOX \
           +home2/sent \
           +home2/drafts \
-          +home2/archive \
+          +848/INBOX \
+          "+848/Sent Items" \
+          +848/Spam \
+          +848/Drafts \
+          +848/Trash
 
 folder-hook ccsw/* source ~/.mutt/accounts/ccsw
 folder-hook home2/* source ~/.mutt/accounts/home2
+folder-hook 848/* source ~/.mutt/accounts/848
 
 # Index View Options ---------------------------------
 set date_format = "%m/%d"

@@ -18,6 +18,9 @@
     ~/.muttrc: muttrc
     ~/.offlineimaprc: offlineimaprc
     ~/.offlineimap/macros.py: offlineimap/macros.py
+    ~/.offlineimap/848_pass.asc: offlineimap/848_pass.asc
+    ~/.offlineimap/ccsw_pass.asc: offlineimap/ccsw_pass.asc
+    ~/.offlineimap/home2_pass.asc: offlineimap/home2_pass.asc
     ~/.radare2rc: radare2rc
     ~/.scripts: scripts
     ~/.tmux.conf: tmux.conf
@@ -33,6 +36,9 @@
     ~/.config/polybar: config/polybar
     ~/.mutt/accounts: mutt/accounts
     ~/.mutt/mailcap: mutt/mailcap
+    ~/.mutt/848_pass.gpg: mutt/848_pass.gpg
+    ~/.mutt/ccsw_pass.gpg: mutt/ccsw_pass.gpg
+    ~/.mutt/home2_pass.gpg: mutt/home2_pass.gpg
 
 - shell: 
     - 

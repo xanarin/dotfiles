@@ -1,9 +1,9 @@
 [general]
 ui = ttyui
-accounts = CCSW, HOME2
+accounts = CCSW, HOME2, 848
 fsync = False
 pythonfile = ~/.offlineimap/macros.py
-maxsyncaccounts = 2
+maxsyncaccounts = 3
 
 [Account CCSW]
 localrepository = CCSW-Local
@@ -70,3 +70,27 @@ folderfilter = lambda folder: folder not in ['[Gmail]/Trash',
                                              '[Gmail]/Important',
                                              '[Gmail]/All Mail',
                                              ]
+
+[Account 848]
+localrepository = 848-Local
+remoterepository = 848-Remote
+
+[Repository 848-Local]
+type = Maildir
+localfolders = .mail/848
+nametrans = lambda folder: {'drafts':        '[Gmail]/Drafts',
+                            'sent':          '[Gmail]/Sent Mail',
+                            'flagged':       '[Gmail]/Starred',
+                            'trash':         '[Gmail]/Trash',
+                           }.get(folder, folder)
+
+
+[Repository 848-Remote]
+maxconnections = 1
+type = IMAP
+remotehost = mail.hover.com
+remoteuser = will@848.productions
+remotepasseval = mailpasswd("848")
+ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+realdelete = no

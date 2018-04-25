@@ -3,7 +3,6 @@ set spoolfile = "+home2/INBOX"
 
 # Mailboxes to show in the sidebar.
 mailboxes +home2/INBOX \
-          +home2/archive \
           +home2/sent \
           +home2/drafts
 

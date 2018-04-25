@@ -1,0 +1,25 @@
+# Default inbox.
+set spoolfile = "+848/INBOX"
+
+# Mailboxes to show in the sidebar.
+mailboxes +848/INBOX \
+          "+848/Sent Items" \
+          +848/Spam \
+          +848/Drafts \
+          +848/Trash
+
+# Other special folders.
+set postponed = "+848/Drafts"
+
+# Compose View Options -------------------------------
+set realname = "Will Sloan"          # who am i?
+set envelope_from                    # which from?
+set from     = "will@848.productions"
+
+# SMTP ------------------------------
+set smtp_url = "smtps://mail.hover.com:465/"
+set my_user=will@848.productions
+set my_pass="8g8pRNuy4miLYzE"
+set smtp_url = "smtps://$my_user:$my_pass@mail.hover.com:465/"
+#source "gpg --quiet -d ~/.mutt/848_pass.gpg |"
+set ssl_force_tls = yes
