@@ -1,7 +1,7 @@
 [user]
 	name = Will Sloan
 	email = will@848.productions
-	signingkey = 6D0268E988F46E057A1EF486CDA406CAFEF634D6
+	signingkey = FE042CC4466F47FFCA350E5776E362DC272F79A0
 [push]
 	default = simple
 [alias]
