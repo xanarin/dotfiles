@@ -1,2 +1,5 @@
 # Ignore downloaded packages
 .vim/bundle/*
+
+# Ignore history of vim's netrw
+**.netrwhist
