@@ -26,7 +26,7 @@ font-2 = "EmojiOne Color:size=18;2"
 font-3 = "SauceCodePro Nerd Font:size=18;3"
 
 modules-left = i3 mpd
-modules-right = memory cpu wired-network date
+modules-right = memory cpu wired-network volume date
 
 [module/cpu]
 type = internal/cpu
@@ -228,4 +228,7 @@ label-urgent-foreground = #000000
 label-urgent-background = #bd2c40
 label-urgent-padding = 2
 
+[module/volume]
+type = internal/volume
+format-volume =  <label-volume>  
 ; vim:ft=dosini

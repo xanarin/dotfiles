@@ -213,11 +213,11 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # Zsh Autocompletion
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# If encrypted Gitlab API token exists, source its contents
-if [ -f $HOME/.gitlab.gpg ]; then
-    source <(gpg --quiet --decrypt $HOME/.gitlab.gpg)
+# SSH authentication with GPG
+unset SSH_AGENT_PID
+if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+    export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 fi
-
 
 #
 ## finalizer

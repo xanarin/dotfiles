@@ -3,6 +3,7 @@ set spoolfile = "+ccsw/INBOX"
 
 # Mailboxes to show in the sidebar.
 mailboxes +ccsw/INBOX \
+          +ccsw/Gitlab \
           +ccsw/archive \
           +ccsw/sent \
           +ccsw/drafts

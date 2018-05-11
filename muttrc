@@ -143,6 +143,9 @@ set include                          # include message in replies
 set forward_quote                    # include message in forwards
 set editor = "vim"        # Use terminal Vim to compose email.
 
+# PGP/GPG Configuration
+source ~/.mutt/gpg.rc
+
 ## mutt colors
 
 ## colors:

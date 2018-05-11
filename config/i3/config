@@ -175,8 +175,8 @@ bindsym XF86AudioPlay exec mpc toggle
 bindsym XF86AudioNext exec mpc next
 bindsym XF86AudioPrev exec mpc prev
 
-bindsym XF86AudioRaiseVolume exec mpc volume +5
-bindsym XF86AudioLowerVolume exec mpc volume -5
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 
 bindsym $mod+Escape exec $locker
 
