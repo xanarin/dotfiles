@@ -43,3 +43,17 @@ libvirtd
 pid
 filemode
 UID
+RPC
+de
+deserialization
+async
+AudioStreamer
+EchoConnection
+C2
+EchoDevice
+ControlServer
+EventManager
+unmuted
+Args
+SIGKILL
+SIGTERM
