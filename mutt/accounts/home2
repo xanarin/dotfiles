@@ -17,5 +17,5 @@ set from     = "will.sloan2@gmail.com"
 
 # SMTP ------------------------------
 set smtp_url = "smtps://will.sloan2@smtp.gmail.com:465/"
-source "gpg --quiet -d ~/.mutt/home2_pass.gpg |"
+source "pass Mutt/home2 |"
 set ssl_force_tls = yes

@@ -19,6 +19,6 @@ set from     = "will@848.productions"
 # SMTP ------------------------------
 set smtp_url = "smtps://mail.hover.com:465/"
 set my_user=will@848.productions
-source "gpg --quiet -d ~/.mutt/848_pass.gpg |"
+source "pass Mutt/848 |"
 set smtp_url = "smtps://$my_user:$my_pass@mail.hover.com:465/"
 set ssl_force_tls = yes
