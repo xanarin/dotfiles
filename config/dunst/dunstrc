@@ -156,7 +156,7 @@
     icon_position = left
 
     # Scale larger icons down to this size, set to 0 to disable
-    max_icon_size = 0
+    max_icon_size = 200
 
     # Paths to default icons.
     icon_folders = /usr/share/icons/Adwaita/48x48/status/:/usr/share/icons/Adwaita/48x48/devices/
@@ -280,8 +280,14 @@
 # to "".
 # NOTE: It might be helpful to run dunst -print in a terminal in order
 # to find fitting options for rules.
+[spotify]
+    appname = "Spotify"
+    urgency = low
+    format = "%b"
+    timeout = 3
 
 [sound]
+    # Only beep for urgency Normal or Higher
     summary = "*"
     script = /home/will/.scripts/beep.sh
 

@@ -171,9 +171,9 @@ bindsym $mod+r mode "resize"
 #
 # Media Keys:
 #
-bindsym XF86AudioPlay exec mpc toggle
-bindsym XF86AudioNext exec mpc next
-bindsym XF86AudioPrev exec mpc prev
+bindsym XF86AudioPlay exec /usr/bin/playerctl --player=spotify play-pause
+bindsym XF86AudioNext exec /usr/bin/playerctl --player=spotify next
+bindsym XF86AudioPrev exec /usr/bin/playerctl --player=spotify previous
 
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
