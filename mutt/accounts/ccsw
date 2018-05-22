@@ -19,5 +19,5 @@ set from     = "wsloan@cc-sw.com"
 
 # SMTP ------------------------------
 set smtp_url = "smtps://wsloan@cc-sw.com@smtp.gmail.com:465/"
-source "pass Mutt/CCSW |"
+source "pass Mutt/ccsw |"
 set ssl_force_tls = yes
