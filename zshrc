@@ -8,12 +8,6 @@ if ( [ $TERM = "linux" ] ); then
 	exit
 fi
 
-## If we're not inside of a tmux instance, start one
-if [ "$TMUX" = "" ]; then
-    tmux
-    exit
-fi
-
 #
 ## User-defined functions
 #
