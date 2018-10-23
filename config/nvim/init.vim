@@ -40,8 +40,6 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'tpope/vim-fugitive'
 " Silver-Searcher
 Plugin 'mileszs/ack.vim'
-" Golang developemtn
-Plugin 'fatih/vim-go'
 
 
 " All of your Plugins must be added before the following line

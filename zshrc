@@ -69,7 +69,7 @@ ssh_clean() {
 export ZSH=~/.oh-my-zsh
 
 # set name of the theme to load.
-ZSH_THEME="gallois"
+ZSH_THEME="maran"
 
 # uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
@@ -105,7 +105,7 @@ SAVEHIST=$HISTSIZE
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git sudo ssh-agent history wd zsh_reload)
+plugins=(git sudo history wd zsh_reload)
 
 
 # source oh-my-zsh setup
