@@ -4,54 +4,32 @@ let mapleader = ","
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-" fix for fish shell
-set shell=/bin/bash
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+" Load vim-plug
+call plug#begin('~/.local/share/nvim/plugged')
 
 " Buffer explorer import
-Plugin 'vim-scripts/bufexplorer.zip'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'L9'
-Plugin 'vim-scripts/FuzzyFinder'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'gcmt/taboo.vim'
-Plugin 'junegunn/goyo.vim'
-" Better support for Markdown
-Plugin 'shime/vim-livedown'
-" Plugins for Linux Kernel development
-Plugin 'joe-skb7/cscope-maps'
+Plug 'scrooloose/nerdcommenter'
+Plug 'flazz/vim-colorschemes'
+Plug 'gcmt/taboo.vim'
+Plug 'junegunn/goyo.vim'
 " You complete me - completion
-Plugin 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --clangd-completer --go-completer' }
 " Color highlighting
-Plugin 'morhetz/gruvbox'
-Plugin 'chriskempson/base16-vim'
+Plug 'morhetz/gruvbox'
+Plug 'chriskempson/base16-vim'
 " Syntax Linting
-Plugin 'w0rp/ale'
+Plug 'w0rp/ale'
 " Syntax pack
-Plugin 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 " Simple statusline
-Plugin 'itchyny/lightline.vim'
+Plug 'itchyny/lightline.vim'
 " Git features
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
 " Silver-Searcher
-Plugin 'mileszs/ack.vim'
-" Golang developemtn
-Plugin 'fatih/vim-go'
+Plug 'mileszs/ack.vim'
 
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-" Put your non-Plugin stuff after this line
+call plug#end()
 
 " ####################
 " BEGIN CUSTOM CONFIGS
@@ -63,7 +41,7 @@ filetype plugin indent on    " required
 " Turn persistent undo on.
 " Means that you can undo even when you close a buffer/VIM
 try
-    set undodir=~/.vim_runtime/temp_dirs/undodir
+    set undodir=~/.local/share/nvim/undo/
     set undofile
 catch
 endtry
