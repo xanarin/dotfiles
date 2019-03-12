@@ -23,9 +23,10 @@ Plug 'w0rp/ale'
 Plug 'sheerun/vim-polyglot'
 " Simple statusline
 Plug 'itchyny/lightline.vim'
-" Git features
+" Tpope's amazing plugins
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-sensible'
 " Silver-Searcher
 Plug 'mileszs/ack.vim'
 
@@ -68,27 +69,15 @@ set cindent
 set autoindent
 set wrap "Wrap lines
 
-" Get persistent undo
-" Put plugins and dictionaries in this dir (also on Windows)
-let vimDir = '$HOME/.vim'
-let &runtimepath.=','.vimDir
-
-" Keep undo history across sessions by storing it in a file
-if has('persistent_undo')
-    let myUndoDir = expand(vimDir . '/undodir')
-    " Create dirs
-    call system('mkdir ' . vimDir)
-    call system('mkdir ' . myUndoDir)
-    let &undodir = myUndoDir
-    set undofile
-endif
-
 " Use the mouse to resize panes
 set mouse=a
 
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
+
+" Keep a few lines at the bottom and top of the buffer when scrolling
+set scrolloff=4
 
 """""""""""""""""""
 " Colors and Fonts
