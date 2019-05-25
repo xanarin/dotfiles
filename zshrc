@@ -97,10 +97,6 @@ DISABLE_AUTO_TITLE="true"
 # the optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # HIST_STAMPS="mm/dd/yyyy"
 
-# increase History Length
-HISTSIZE=999999999
-SAVEHIST=$HISTSIZE
-
 # which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -114,6 +110,10 @@ source $ZSH/oh-my-zsh.sh
 #
 ## User configuration
 #
+
+# increase History Length
+HISTSIZE=999999999
+SAVEHIST=$HISTSIZE
 
 # Don't throw an error when a glob doesn't match anything.
 setopt nonomatch
