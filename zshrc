@@ -69,7 +69,7 @@ ssh_clean() {
 export ZSH=~/.oh-my-zsh
 
 # set name of the theme to load.
-ZSH_THEME="maran"
+ZSH_THEME="frisk"
 
 # uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
