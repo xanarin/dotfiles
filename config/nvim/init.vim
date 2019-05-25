@@ -16,31 +16,18 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Buffer explorer import
-Plugin 'vim-scripts/bufexplorer.zip'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'L9'
-Plugin 'vim-scripts/FuzzyFinder'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'gcmt/taboo.vim'
 Plugin 'junegunn/goyo.vim'
-" Better support for Markdown
-Plugin 'shime/vim-livedown'
-" Plugins for Linux Kernel development
-Plugin 'joe-skb7/cscope-maps'
-" Color highlighting
-Plugin 'morhetz/gruvbox'
 Plugin 'chriskempson/base16-vim'
-" Syntax Linting
-Plugin 'w0rp/ale'
 " Syntax pack
 Plugin 'sheerun/vim-polyglot'
 " Simple statusline
 Plugin 'itchyny/lightline.vim'
 " Git features
 Plugin 'tpope/vim-fugitive'
-" Silver-Searcher
-Plugin 'mileszs/ack.vim'
-
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
