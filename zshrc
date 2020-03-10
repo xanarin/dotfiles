@@ -8,12 +8,6 @@ if ( [ $TERM = "linux" ] ); then
 	exit
 fi
 
-## If we're not inside of a tmux instance, start one
-if [ "$TMUX" = "" ]; then
-    tmux
-    exit
-fi
-
 #
 ## User-defined functions
 #
@@ -121,16 +115,6 @@ source $ZSH/oh-my-zsh.sh
 ## User configuration
 #
 
-# Enable bash completion (for virtex)
-#autoload -U compinit && compinit
-# Only reload compinit database once per day
-autoload -U bashcompinit && bashcompinit
-source /etc/bash_completion.d/virtex
-# Define bash-only completion functions as filler stubs
-compopt() { :; }
-_get_comp_words_by_ref() { :; }
-__ltrim_colon_completions() { :; }
-
 # Don't throw an error when a glob doesn't match anything.
 setopt nonomatch
 
@@ -201,17 +185,12 @@ alias trash-own="sudo chown -R will:will $HOME/.local/share/Trash/files && sudo 
 alias view="vim -R"
 alias l="less"
 
-# Automatically give password to weechat
-alias weechat="WEECHAT_PASSPHRASE=`cat $HOME/.weechat/secret_pass2.txt` weechat"
-
 # Dircolors
 eval `dircolors -b $HOME/.dir_colors`
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # Zsh Syntax Highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# Zsh Autocompletion
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # SSH authentication with GPG
 unset SSH_AGENT_PID

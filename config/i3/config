@@ -3,21 +3,18 @@
 ### Variables
 #
 # Alt Key.
-set $mod Mod4
+set $mod Mod1
 # Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term termite
+set $term kitty
 # Your preferred application launcher
-set $menu rofi -show drun -font "Source Code Pro 16"
+set $menu rofi -show drun -font "Liberation Mono 14"
 # Your preferred way to lock the screen
 set $locker /home/will/.scripts/lock.sh
-
-# Font
-font pango:San Francisco Text 14
 
 ### Key bindings
 #
@@ -132,7 +129,8 @@ font pango:San Francisco Text 14
 #
 #new_window 1pixel
 for_window [class="^.*"] border pixel 4
-gaps inner 30
+# This will only work on i3-gaps, which is not available in Debian buster
+#gaps inner 30
 
 #
 # Colors
@@ -180,13 +178,31 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 
 bindsym $mod+Escape exec $locker
 
-# Start top bar
-exec --no-startup-id /usr/bin/polybar top &
+#
+# i3bar (status bar)
+#
+bar {
+    status_command i3status
+    position top
+    workspace_buttons yes
+    tray_output primary
+
+    font pango:Liberation Mono 14
+    colors {
+        background #2d2d2d
+        statusline #d3d0c8
+        focused_workspace  #d3d0c8 #6699cc
+        active_workspace   #d3d0c8 #6699cc
+        inactive_workspace #d3d0c8 #2d2d2d
+        urgent_workspace   #d3d0c8 #f2777a
+    }
+}
+
 # Set CapsLock => Escape
 exec --no-startup-id /usr/bin/setxkbmap -layout us -option caps:escape
 # Set key repeat delay and speed
 exec --no-startup-id /usr/bin/xset r rate 200 40
 # Start compositor
-exec --no-startup-id /usr/bin/compton --config /home/will/.config/compton/compton.conf
+#exec --no-startup-id /usr/bin/compton --config /home/will/.config/compton/compton.conf
 # Set wallpaper
-exec --no-startup-id /usr/bin/feh --bg-fill ~/.scripts/current_wallpaper
+#exec --no-startup-id /usr/bin/feh --bg-fill ~/.scripts/current_wallpaper
