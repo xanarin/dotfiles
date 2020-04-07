@@ -17,13 +17,6 @@ push() {
   curl -s -F "token=afgq15q22847cg8e1xjpmjfug5ran3" -F "user=u2f4smknjr4z5mhc3xque2jzp7ap7n" -F "title=Work Blackbox" -F "message=$1" https://api.pushover.net/1/messages.json
 }
 
-open() {
-  zsh -c "
-    mimeo \"$1\" &
-    disown mimeo
-  "
-}
-
 # print some wisdom by our favorite animals
 cowspeakfortune() {
   h=`date +%H`
@@ -124,9 +117,6 @@ export LC_ALL=en_US.utf-8
 
 export PATH="$HOME/.bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 
-# Add CMAKE_PREFIX_PATH for Qt compatability
-export CMAKE_PREFIX_PATH=/opt/Qt/5.9/gcc_64
-
 # Set fake "window manager" to make IDA inherit gtk+2 theme
 export XDG_CURRENT_DESKTOP=gnome
 
@@ -137,25 +127,17 @@ export EDITOR='nvim'
 export MANPAGER="nvim -c 'set ft=man' -"
 
 # alias common commands
-alias dusort="du -sh * | sort -h"
-alias utime="date +%s"
-alias ipecho="curl ipecho.net/plain"
 alias grep="grep --color=auto"
 alias watch="watch -n1"
 alias ls="ls --color -l"
-alias diff="colordiff"
 alias ffprobe="ffprobe -hide_banner"
 alias ffmpeg="ffmpeg -hide_banner"
-alias sed="sed -E"
-
-alias music="ncmpcpp"
-# Linux-specific keyboard speed command
-alias fast="/usr/bin/xset r rate 200 40"
 
 # alias view to read-only vim instead of ex
-alias view="vim -R"
-alias l="less"
+alias view="nvim -R"
 
 # Dircolors
 eval `dircolors -b $HOME/.dir_colors`
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

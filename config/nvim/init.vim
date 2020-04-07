@@ -20,7 +20,6 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'L9'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'gcmt/taboo.vim'
-Plugin 'junegunn/goyo.vim'
 Plugin 'chriskempson/base16-vim'
 " Syntax pack
 Plugin 'sheerun/vim-polyglot'
@@ -28,6 +27,8 @@ Plugin 'sheerun/vim-polyglot'
 Plugin 'itchyny/lightline.vim'
 " Git features
 Plugin 'tpope/vim-fugitive'
+" Useable keyboard bindings
+Plugin 'tpope/vim-unimpaired'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -266,6 +267,7 @@ map <leader>g :YcmCompleter GoTo<CR>
 " Fugitive (Git Wrapper)
 " Open diffs in vertical splits
 set diffopt+=vertical
+nmap gs :Gstatus<cr>
 
 " Ack/Ag (Silver Searcher)
 if executable('ag')
