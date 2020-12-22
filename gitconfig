@@ -7,14 +7,8 @@
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     find = log --color --pretty=\"format:%Cred%h %Creset%s %Cblue<%an>\" --grep
     diffn = diff --cached
-[core]
-    pager = grep -v -E \"(diff --git)\" | vim -R -c 'set ft=diff' - 
-[pager]
-    log = false
-    branch = false
-[color]
-	ui = auto
-    diff = never
+    co = checkout
+    head = rev-parse --short HEAD
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true

@@ -212,6 +212,11 @@ nmap <leader>so :source ~/.vimrc<cr>
 set exrc
 set secure
 
+" Preview replacement changes
+if has("nvim")
+  set inccommand=nosplit
+endif
+
 """"""""""""""""""
 " Plugin Config
 """"""""""""""""""
