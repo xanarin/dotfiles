@@ -188,6 +188,11 @@ alias l="less"
 # Dircolors
 eval `dircolors -b $HOME/.dir_colors`
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+alias ip="ip -color=auto"
+
+# Use system fzf if available
+SYSTEM_FZF_ZSH=/usr/share/doc/fzf/examples/key-bindings.zsh
+[ -f "$SYSTEM_FZF_ZSH" ] && source "$SYSTEM_FZF_ZSH"
 
 # Zsh Syntax Highlighting
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

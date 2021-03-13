@@ -43,4 +43,3 @@
       stderr: false
     - [nvim +PluginInstall +qall, Install neovim plugins]
     - [./oh_my_zsh_install.sh, Install Oh My ZSH]
-
