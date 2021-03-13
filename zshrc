@@ -139,5 +139,8 @@ alias view="nvim -R"
 # Dircolors
 eval `dircolors -b $HOME/.dir_colors`
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+alias ip="ip -color=auto"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Use system fzf if available
+SYSTEM_FZF_ZSH=/usr/share/doc/fzf/examples/key-bindings.zsh
+[ -f "$SYSTEM_FZF_ZSH" ] && source "$SYSTEM_FZF_ZSH"

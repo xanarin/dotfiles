@@ -47,7 +47,3 @@
       stderr: false
     - [nvim +PluginInstall +qall, Install neovim plugins]
     - [./oh_my_zsh_install.sh, Install Oh My ZSH]
-    - 
-      command: git clone --depth 1 -b 0.18.0 https://github.com/junegunn/fzf.git ~/.fzf
-      description: Download fzf
-    - [~/.fzf/install, Install fzf]
