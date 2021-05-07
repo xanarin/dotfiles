@@ -3,3 +3,6 @@
 
 # Ignore history of vim's netrw
 **.netrwhist
+
+# Ignore custom spelling lists
+config/nvim/spell/
