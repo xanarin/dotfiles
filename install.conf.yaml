@@ -16,8 +16,6 @@
     ~/.dir_colors: dir_colors
     ~/.gitconfig: gitconfig
     ~/.muttrc: muttrc
-    ~/.offlineimaprc: offlineimaprc
-    ~/.offlineimap/macros.py: offlineimap/macros.py
     ~/.radare2rc: radare2rc
     ~/.scripts: scripts
     ~/.tmux.conf: tmux.conf
@@ -31,9 +29,6 @@
     ~/.config/mimeo: config/mimeo
     ~/.config/nvim: config/nvim
     ~/.config/polybar: config/polybar
-    ~/.mutt/accounts: mutt/accounts
-    ~/.mutt/mailcap: mutt/mailcap
-    ~/.password-store: password-store
 
 - shell: 
     - 

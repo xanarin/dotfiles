@@ -1,6 +1,6 @@
 [user]
 	name = Will Sloan
-	email = wsloan@cc-sw.com
+	email = will@848.email
 [push]
 	default = simple
 [alias]
@@ -8,13 +8,7 @@
     find = log --color --pretty=\"format:%Cred%h %Creset%s %Cblue<%an>\" --grep
     diffn = diff --cached
 [core]
-    pager = grep -v -E \"(diff --git)\" | vim -R -c 'set ft=diff' - 
-[pager]
-    log = false
-    branch = false
-[color]
-	ui = auto
-    diff = never
+    pager = less -FX
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true

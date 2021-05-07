@@ -6,8 +6,6 @@ filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-" fix for fish shell
-set shell=/bin/bash
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -15,36 +13,23 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-" Buffer explorer import
-Plugin 'vim-scripts/bufexplorer.zip'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'L9'
-Plugin 'vim-scripts/FuzzyFinder'
-Plugin 'flazz/vim-colorschemes'
 Plugin 'gcmt/taboo.vim'
 Plugin 'junegunn/goyo.vim'
-" Better support for Markdown
-Plugin 'shime/vim-livedown'
-" Plugins for Linux Kernel development
-Plugin 'joe-skb7/cscope-maps'
 " You complete me - completion
 Plugin 'Valloric/YouCompleteMe'
 " Color highlighting
-Plugin 'morhetz/gruvbox'
 Plugin 'chriskempson/base16-vim'
 " Syntax Linting
 Plugin 'w0rp/ale'
-" Syntax pack
-Plugin 'sheerun/vim-polyglot'
 " Simple statusline
 Plugin 'itchyny/lightline.vim'
-" Git features
+" All of tpope's greatest hits
 Plugin 'tpope/vim-fugitive'
-" Silver-Searcher
-Plugin 'mileszs/ack.vim'
-" Golang developemtn
-Plugin 'fatih/vim-go'
-
+Plugin 'tpope/vim-unimpaired'
+" Fuzzy searching
+Plugin 'junegunn/fzf.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -111,6 +96,9 @@ set mouse=a
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
+
+" Preview substitutions in real-time
+set inccommand=nosplit
 
 """""""""""""""""""
 " Colors and Fonts
@@ -250,7 +238,8 @@ let g:bufExplorerSortBy='mru'
 map <leader>o :BufExplorer<cr>
 
 " Fuzzy Finder
-nmap <leader>f :FufFile<cr>
+nmap <C-t> :Files<cr>
+nmap <C-f> :Rg <C-r><C-w><cr>
 
 " Goyo
 nmap <leader>z :Goyo<cr>
@@ -259,15 +248,6 @@ nmap <leader>z :Goyo<cr>
 let g:lightline = {
 \ 'colorscheme': 'wombat',
 \}
-
-" Go-vim
-au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <leader>c <Plug>(go-coverage)
-au FileType go nmap <leader>l <Plug>(go-lint)
-au FileType go nmap <leader>d <Plug>(go-doc)
-let g:go_metalinter_autosave = 1
 
 " Taboo.vim
 map <leader>, :TabooRename
@@ -284,57 +264,19 @@ map <leader>g :YcmCompleter GoTo<CR>
 " Open diffs in vertical splits
 set diffopt+=vertical
 
-" Ack/Ag (Silver Searcher)
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
-
 
 " Python
 au BufNewFile,BufRead *.py
     \set tabstop=4
     \set softtabstop=4
     \set shiftwidth=4
-    \set textwidth=79
+    \set textwidth=110
     \set expandtab
     \set autoindent
     \set fileformat=unix
-let python_highlight_all=1
-au FileType python nmap <leader>r :! ./% <cr>
-
-" C++
-au FileType cpp
-    \set tabstop=4
-    \set softtabstop=4
-    \set shiftwidth=4
-    \set expandtab
-au BufNewFile,BufRead *.cpp nnoremap <leader>m :make!<cr>
-au BufNewFile,BufRead *.cpp nmap <leader>r :! clear && ./%:r<cr>
-
-" C (for kernel dev)
-au FileType c.doxygen
-    \set tabstop=4
-    \set softtabstop=4
-    \set shiftwidth=4
-    \set expandtab
-au BufNewFile,BufRead *.c nnoremap <leader>m :make!<cr>
-au BufNewFile,BufRead *.c nmap <leader>r :make!<cr> :make! deploy<cr>
-au BufNewFile,BufRead *.c nmap <leader>d :make! deploy<cr>
-
-" Markdown
-au FileType markdown nnoremap <leader>m :make!<cr>
-au FileType markdown nnoremap <leader>r :LivedownToggle<cr>
 
 " Neovim
 tnoremap <Esc> <C-\><C-n>
 
-" netrw
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 20
-"  Pre-map refresh so Netrw it doesn't bind <c-l> when it loads
-nmap <unique> <c-e> <Plug>NetrwRefresh 
-map <leader>nn :Lexplore<cr>
-
+" Vim-Fugitive (Git)
+nmap gs :Gstatus<cr>

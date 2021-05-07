@@ -9,59 +9,6 @@ if ( [ $TERM = "linux" ] ); then
 fi
 
 #
-## User-defined functions
-#
-
-# add push notifications over Pushover
-push() {
-  curl -s -F "token=afgq15q22847cg8e1xjpmjfug5ran3" -F "user=u2f4smknjr4z5mhc3xque2jzp7ap7n" -F "title=Work Blackbox" -F "message=$1" https://api.pushover.net/1/messages.json
-}
-
-open() {
-  zsh -c "
-    mimeo \"$1\" &
-    disown mimeo
-  "
-}
-
-# print some wisdom by our favorite animals
-cowspeakfortune() {
-  h=`date +%H`
-  # If early morning (middle of the night)
-  if [ $h -lt 06 ]
-  then
-      cowargs="elephant"
-  # If mid to late morning
-  elif [ $h -lt 12 ]
-  then
-      cowargs="moose"
-  # If early afternoon
-  elif [ $h -lt 16 ]
-  then
-      cowargs="tux"
-  # If mid morning
-  elif [ $h -lt 20 ]
-  then
-      cowargs="vader"
-  # If late night
-  elif [ $h -lt 24 ]
-  then
-      cowargs="dragon-and-cow"
-  # If we missed a case
-  else
-      cowargs="-d"
-  fi
-  # Now print motd
-  echo $fg[cyan]
-  fortune -s | cowsay -f $cowargs
-  echo ""
-}
-
-ssh_clean() {
-    sed -i "/$1/,+1 d" ~/.ssh/known_hosts
-}
-
-#
 ## Oh-My-Zsh Configuration
 #
 
@@ -97,9 +44,6 @@ DISABLE_AUTO_TITLE="true"
 # the optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # HIST_STAMPS="mm/dd/yyyy"
 
-# increase History Length
-HISTSIZE=999999999
-SAVEHIST=$HISTSIZE
 
 # which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -107,9 +51,12 @@ SAVEHIST=$HISTSIZE
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git sudo ssh-agent history wd zsh_reload)
 
-
 # source oh-my-zsh setup
 source $ZSH/oh-my-zsh.sh
+
+# increase History Length
+HISTSIZE=999999999
+SAVEHIST=$HISTSIZE
 
 #
 ## User configuration
@@ -122,37 +69,8 @@ setopt nonomatch
 export LANG=en_US.utf-8
 export LC_ALL=en_US.utf-8
 
-export PATH="$HOME/.bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/ida-6.95:$PATH"
-
-# Android Tools PATH
-export PATH="$PATH:/home/will/Android/Sdk/tools:/home/will/Android/Sdk/platform-tools"
-
-# Ruby Gems
-export PATH="$PATH:$HOME/.gem/ruby/2.4.0/bin"
-
-# Add cross-compilation tools for ARM
-export PATH="$PATH:/usr/local/bin/cross"
-
-# Add virtex dev path
-export PATH="$PATH:$HOME/Documents/Virtex-VM/bin"
-
-# Go workspace path
-export GOPATH="$HOME/Documents/golang"
-
-# Add Go bin to path
-export PATH="$PATH:$GOPATH/bin"
-
-# Add Qt Libs to lib path - This breaks IDA Pro 7.0
-#export LD_LIBRARY_PATH=/opt/Qt/5.9/gcc_64/lib:$LD_LIBRARY_PATH
-
-# Add CMAKE_PREFIX_PATH for Qt compatability
-export CMAKE_PREFIX_PATH=/opt/Qt/5.9/gcc_64
-
 # Set fake "window manager" to make IDA inherit gtk+2 theme
 export XDG_CURRENT_DESKTOP=gnome
-
-# Import gitlab ssh key
-ssh-add ~/.ssh/keys/gitlab 2> /dev/null
 
 # make sure we're always editing in vim #vimmasterrace
 export EDITOR='nvim'
@@ -161,55 +79,38 @@ export EDITOR='nvim'
 export MANPAGER="nvim -c 'set ft=man' -"
 
 # alias common commands
-alias dusort="du -sh * | sort -h"
-alias utime="date +%s"
-alias ipecho="curl ipecho.net/plain"
 alias grep="grep --color=auto"
 alias watch="watch -n1"
-alias ls="ls --color -l"
-alias diff="colordiff"
-alias ffprobe="ffprobe -hide_banner"
-alias ffmpeg="ffmpeg -hide_banner"
-alias sed="sed -E"
+alias ls="ls --color -lh"
+alias ip="ip -color=auto"
 
-alias music="ncmpcpp"
 # Linux-specific keyboard speed command
 alias fast="/usr/bin/xset r rate 200 40"
-
-# use trash-cli instead of just blasting away files
-alias rm=trash
-alias trash-size="du -sh /home/will/.local/share/Trash | awk '{print \"Trash Size:\", \$1}'"
-alias trash-own="sudo chown -R will:will $HOME/.local/share/Trash/files && sudo chmod 744 -R $HOME/.local/share/Trash/files"
-
-# alias view to read-only vim instead of ex
-alias view="vim -R"
-alias l="less"
 
 # Dircolors
 eval `dircolors -b $HOME/.dir_colors`
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-alias ip="ip -color=auto"
 
 # Use system fzf if available
-SYSTEM_FZF_ZSH=/usr/share/doc/fzf/examples/key-bindings.zsh
-[ -f "$SYSTEM_FZF_ZSH" ] && source "$SYSTEM_FZF_ZSH"
+DEBIAN_FZF_ZSH=/usr/share/doc/fzf/examples/key-bindings.zsh
+[ -f "$DEBIAN_FZF_ZSH" ] && source "$DEBIAN_FZF_ZSH"
 
-# Zsh Syntax Highlighting
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+FEDORA_FZF_ZSH=/usr/share/fzf/shell/key-bindings.zsh
+[ -f "$FEDORA_FZF_ZSH" ] && source "$FEDORA_FZF_ZSH"
 
-# SSH authentication with GPG
-unset SSH_AGENT_PID
-if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-    export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-fi
+# Use Syntax Highlighting if available
+ZSH_SYNTAX_HIGHLIGHTING=/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -f "$ZSH_SYNTAX_HIGHLIGHTING" ] && source "$ZSH_SYNTAX_HIGHLIGHTING"
 
 #
-## finalizer
+## tweaks/hacks
 #
 
-# print fortune each time a zsh shell is opened (if the necessary programs are installed)
-if hash fortune 2>/dev/null && hash cowsay 2>/dev/null; then
-    cowspeakfortune
-else
-    echo "You do not have fortune or cowspeak installed, sorry"
-fi
+# This is needed for some systems where oh-my-zsh thinks that bzr is available,
+# which causes navigation in git repos to be unbelievable slow
+alias bzr=true
+
+# Some applications (like tmux) will reset this before launching zsh and that
+# errant TERM value will cause programs to misbehave (because they think we're
+# running a terminal from 1982). This 'export' should fix us back up in that case.
+export TERM=xterm-256color
