@@ -10,12 +10,12 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term env WINIT_HIDPI_FACTOR=1 alacritty
+set $term kitty
 # Your preferred application launcher
-set $menu rofi -show drun -font "Office Code Pro 16"
+set $menu rofi -show drun -font "Office Code Pro 14"
 
 # Font
-font pango:Office Code Pro 16
+font pango:Office Code Pro 11
 
 ### Key bindings
 #
@@ -75,6 +75,12 @@ font pango:Office Code Pro 16
     bindsym $mod+Shift+9 move container to workspace 9
     bindsym $mod+Shift+0 move container to workspace 10
     # Note: workspaces can have any name you want, not just numbers.
+
+    # Move workspace to external monitor(s)
+    bindsym $mod+Control+h move workspace to left
+    bindsym $mod+Control+j move workspace to down
+    bindsym $mod+Control+k move workspace to up
+    bindsym $mod+Control+l move workspace to right
 
     # We just use 1-10 as the default.
 #
@@ -139,11 +145,11 @@ bindsym $mod+r mode "resize"
 #
 bar {
     output eDP-1
-    status_command i3status
+    swaybar_command waybar
     position top
     workspace_buttons yes
     tray_output none
-    font pango:Office Code Pro 13
+#   font pango:Office Code Pro 13
     separator_symbol " | "
 
     colors {
@@ -161,8 +167,11 @@ bar {
 #
 bindsym XF86AudioRaiseVolume  exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume  exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86MonBrightnessUp   exec brightnessctl set 10%+
-bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+bindsym XF86AudioMute         exec pactl set-sink-mute   @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute      exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86MonBrightnessUp   exec brightlight -p -i 10
+bindsym XF86MonBrightnessDown exec brightlight -p -d 10
+
 
 bindsym $mod+Escape exec swaylock
 
@@ -181,8 +190,13 @@ input 1:1:AT_Translated_Set_2_keyboard {
 output eDP-1 background ~/Pictures/wallpaper/rick_and_morty.png center
 
 # Set up display warming
-exec --no-startup-id /usr/local/bin/redshift
+exec --no-startup-id gammastep
+# Set up notifications
+exec --no-startup-id mako
+
 # Set up idle and sleep screen locking
-exec --no-startup-id /usr/local/bin/swayidle -w \
+exec --no-startup-id /usr/bin/swayidle -w \
          before-sleep 'swaylock -f' \
          timeout 600 'swaylock -f'
+# Set up polkit daemon
+exec --no-startup-id /usr/bin/lxpolkit

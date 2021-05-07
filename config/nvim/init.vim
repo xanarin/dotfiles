@@ -120,7 +120,7 @@ colorscheme base16-eighties
 :hi Title ctermfg=DarkGray ctermbg=LightGray
 
 " Preserve Transparency on URxvt
-hi Normal ctermbg=none
+hi Normal guibg=NONE ctermbg=NONE
 
 """""""""""""""""""""
 " Moving around
@@ -189,18 +189,6 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-" Create new line without entering insert
-nmap <cr> o<Esc>
-
-" Go around to errors
-nmap <leader>cn :cnext<cr>
-nmap <leader>cp :cprev<cr>
-
-" Go around to locations
-nmap <leader>n :lnext<cr>
-nmap <leader>p :lprevious<cr>
-nmap <leader>r :lrewind<cr>
-
 " Splits
 nmap <leader>\ :vsplit<cr>
 nmap <leader>- :split<cr>
@@ -208,9 +196,6 @@ nmap <leader>- :split<cr>
 nmap <C-S>j :res -5<cr>
 set splitbelow
 set splitright
-
-" Source
-nmap <leader>so :source ~/.vimrc<cr>
 
 " Allow local vimrcs
 set exrc
@@ -229,13 +214,6 @@ let g:ale_linters = {
 let g:ale_python_flake8_options = '--max-line-length 140 --ignore F405,E2,E3,E722'
 let g:ale_completion_enabled = 0
 
-
-" bufExplorer plugin
-let g:bufExplorerDefaultHelp=0
-let g:bufExplorerShowRelativePath=1
-let g:bufExplorerFindActive=1
-let g:bufExplorerSortBy='mru'
-map <leader>o :BufExplorer<cr>
 
 " Fuzzy Finder
 nmap <C-t> :Files<cr>
@@ -263,6 +241,7 @@ map <leader>g :YcmCompleter GoTo<CR>
 " Fugitive (Git Wrapper)
 " Open diffs in vertical splits
 set diffopt+=vertical
+nmap gs :Gstatus<cr>
 
 
 " Python
@@ -277,6 +256,3 @@ au BufNewFile,BufRead *.py
 
 " Neovim
 tnoremap <Esc> <C-\><C-n>
-
-" Vim-Fugitive (Git)
-nmap gs :Gstatus<cr>

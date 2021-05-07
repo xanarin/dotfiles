@@ -44,12 +44,11 @@ DISABLE_AUTO_TITLE="true"
 # the optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # HIST_STAMPS="mm/dd/yyyy"
 
-
 # which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git sudo ssh-agent history wd zsh_reload)
+plugins=(git sudo history wd zsh_reload)
 
 # source oh-my-zsh setup
 source $ZSH/oh-my-zsh.sh
@@ -87,7 +86,10 @@ alias ip="ip -color=auto"
 # Linux-specific keyboard speed command
 alias fast="/usr/bin/xset r rate 200 40"
 
-# Dircolors
+# Add user pip3 installed packages to PATH
+export PATH="$PATH:$HOME/.local/bin"
+
+# Coloring
 eval `dircolors -b $HOME/.dir_colors`
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
@@ -101,6 +103,12 @@ FEDORA_FZF_ZSH=/usr/share/fzf/shell/key-bindings.zsh
 # Use Syntax Highlighting if available
 ZSH_SYNTAX_HIGHLIGHTING=/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -f "$ZSH_SYNTAX_HIGHLIGHTING" ] && source "$ZSH_SYNTAX_HIGHLIGHTING"
+
+if [[ -e /etc/grc.zsh ]]; then
+    source /etc/grc.zsh
+    source /etc/profile.d/grc.sh # This should be done automatically, but on
+                                 # Fedora with ZSH the file is not always sourced
+fi
 
 #
 ## tweaks/hacks
