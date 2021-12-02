@@ -12,7 +12,7 @@ set $right l
 # Your preferred terminal emulator
 set $term kitty
 # Your preferred application launcher
-set $menu rofi -show drun -font "Liberation Mono 14"
+set $menu rofi -show drun -font "Liberation Mono 12"
 # Your preferred way to lock the screen
 set $locker /home/will/.scripts/lock.sh
 
@@ -137,8 +137,7 @@ for_window [class="^.*"] border pixel 4
 #
 
 # Highlight focused window border
-#client.focused  #000000 #A443BF #000000 #3F85CB
-client.focused  #000000 #ED7718 #000000 #3F85CB
+client.focused  #000000 #6699cc #000000 #f2777a
 
 
 #
@@ -187,7 +186,7 @@ bar {
     workspace_buttons yes
     tray_output primary
 
-    font pango:Liberation Mono 14
+    font pango:Liberation Mono 10
     colors {
         background #2d2d2d
         statusline #d3d0c8
@@ -199,10 +198,10 @@ bar {
 }
 
 # Set CapsLock => Escape
-exec --no-startup-id /usr/bin/setxkbmap -layout us -option caps:escape
+exec_always --no-startup-id /usr/bin/setxkbmap -layout us -option caps:escape
 # Set key repeat delay and speed
-exec --no-startup-id /usr/bin/xset r rate 200 40
-# Start compositor
-#exec --no-startup-id /usr/bin/compton --config /home/will/.config/compton/compton.conf
+exec_always --no-startup-id /usr/bin/xset r rate 200 40
 # Set wallpaper
 #exec --no-startup-id /usr/bin/feh --bg-fill ~/.scripts/current_wallpaper
+# Start up .desktop autostart files
+exec --no-startup-id dex -a -s /etc/i3/autostart

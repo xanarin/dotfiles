@@ -9,6 +9,8 @@
     diffn = diff --cached
 [core]
     pager = less -FX
+    co = checkout
+    cob = checkout -b
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true

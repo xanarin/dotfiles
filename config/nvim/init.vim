@@ -28,7 +28,8 @@ Plugin 'itchyny/lightline.vim'
 " All of tpope's greatest hits
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-unimpaired'
-" Fuzzy searching
+" FZF
+Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 
 " All of your Plugins must be added before the following line
@@ -71,7 +72,7 @@ set encoding=utf8
 set ffs=unix,mac,dos
 
 " Indents
-set cindent
+set nocindent " Don't automatically do C-like indenting
 set autoindent
 set wrap "Wrap lines
 
@@ -201,23 +202,30 @@ set splitright
 set exrc
 set secure
 
+" Preview replacement changes
+if has("nvim")
+  set inccommand=nosplit
+endif
+
+
 """"""""""""""""""
 " Plugin Config
 """"""""""""""""""
 
 " ALE (syntax checker)
 let g:ale_lint_on_text_changed = 'never'
-let g:ale_linters = {
-    \ 'python': ['pylint'],
-    \ 'golang': []
-\}
+let g:ale_python_pylint_executable = 'pylint3'
+let g:ale_python_pylint_options = '--disable=missing-docstring --max-line-length=200'
 let g:ale_python_flake8_options = '--max-line-length 140 --ignore F405,E2,E3,E722'
 let g:ale_completion_enabled = 0
 
 
-" Fuzzy Finder
+" Fuzzy Finding (fzf and rg)
 nmap <C-t> :Files<cr>
 nmap <C-f> :Rg <C-r><C-w><cr>
+" fzf
+"nmap <C-F> :execute 'Rg <c-r><c-w>'<cr>
+"nmap <C-T> :FZF<cr>
 
 " Goyo
 nmap <leader>z :Goyo<cr>
@@ -243,7 +251,6 @@ map <leader>g :YcmCompleter GoTo<CR>
 set diffopt+=vertical
 nmap gs :Gstatus<cr>
 
-
 " Python
 au BufNewFile,BufRead *.py
     \set tabstop=4
@@ -253,6 +260,14 @@ au BufNewFile,BufRead *.py
     \set expandtab
     \set autoindent
     \set fileformat=unix
+"let python_highlight_all=1
+
+" C
+au FileType c.doxygen
+    \set tabstop=4
+    \set softtabstop=4
+    \set shiftwidth=4
+    \set expandtab
 
 " Neovim
 tnoremap <Esc> <C-\><C-n>

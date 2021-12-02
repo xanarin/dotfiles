@@ -9,6 +9,17 @@ if ( [ $TERM = "linux" ] ); then
 fi
 
 #
+## User-defined functions
+#
+
+open() {
+  zsh -c "
+    xdg-open \"$1\" &
+    disown xdg-open
+  "
+}
+
+#
 ## Oh-My-Zsh Configuration
 #
 
@@ -79,6 +90,7 @@ export MANPAGER="nvim -c 'set ft=man' -"
 
 # alias common commands
 alias grep="grep --color=auto"
+alias ip="ip --color"
 alias watch="watch -n1"
 alias ls="ls --color -lh"
 alias ip="ip -color=auto"
