@@ -13,6 +13,17 @@
 
 - link:
     ~/.bashrc: bashrc
+    ~/.config/cava: config/cava
+    ~/.config/compton: config/compton
+    ~/.config/dunst: config/dunst
+    ~/.config/i3: config/i3
+    ~/.config/kitty: config/kitty
+    ~/.config/mimeapps.list: config/mimeapps.list
+    ~/.config/mimeo: config/mimeo
+    ~/.config/nvim: config/nvim
+    ~/.config/sway: config/sway
+    ~/.config/swaylock: config/swaylock
+    ~/.config/waybar: config/waybar
     ~/.dir_colors: dir_colors
     ~/.gitconfig: gitconfig
     ~/.muttrc: muttrc
@@ -21,16 +32,6 @@
     ~/.tmux.conf: tmux.conf
     ~/.vimrc: vimrc
     ~/.zshrc: zshrc
-    ~/.config/mimeapps.list: config/mimeapps.list
-    ~/.config/cava: config/cava
-    ~/.config/compton: config/compton
-    ~/.config/dunst: config/dunst
-    ~/.config/i3: config/i3
-    ~/.config/sway: config/sway
-    ~/.config/swaylock: config/swaylock
-    ~/.config/mimeo: config/mimeo
-    ~/.config/nvim: config/nvim
-    ~/.config/polybar: config/polybar
 
 - shell: 
     - 

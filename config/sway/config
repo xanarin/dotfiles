@@ -184,10 +184,23 @@ input 1:1:AT_Translated_Set_2_keyboard {
     repeat_rate 40
 }
 
+input 1133:4132:Logitech_M310 {
+    accel_profile flat
+    pointer_accel 0.5
+}
+
+input 2:7:SynPS/2_Synaptics_TouchPad {
+    dwt enabled
+}
+
+input 2:10:TPPS/2_IBM_TrackPoint {
+    dwt enabled
+}
+
 #
 # Output Options
 #
-output eDP-1 background ~/Pictures/wallpaper/rick_and_morty.png center
+output eDP-1 background ~/Pictures/wallpaper/epcot_small.png center
 
 # Set up display warming
 exec --no-startup-id gammastep

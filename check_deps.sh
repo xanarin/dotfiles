@@ -1,3 +1,10 @@
+check_installed() {
+  hash "$1" >/dev/null 2>&1 || {
+    printf "${RED}Error: $1 is not available. Please install the applicable package${NORMAL}\n"
+    exit 1
+  }
+}
+
 main() {
   # Use colors, but only if connected to a terminal, and that terminal
   # supports them.
@@ -30,20 +37,10 @@ main() {
     exit
   fi
 
-  hash nvim >/dev/null 2>&1 || {
-    printf "${RED}Error: neovim is not installed${NORMAL}\n"
-    exit 1
-  }
-
-  hash tmux >/dev/null 2>&1 || {
-    printf "${RED}Error: tmux is not installed${NORMAL}\n"
-    exit 1
-  }
-
-  hash xsel >/dev/null 2>&1 || {
-    printf "${RED}Error: xsel is not installed${NORMAL}\n"
-    exit 1
-  }
+  check_installed nvim
+  check_installed zsh
+  check_installed fzf
+  check_installed rg
 }
 
 main
