@@ -18,7 +18,7 @@ Plugin 'L9'
 Plugin 'gcmt/taboo.vim'
 Plugin 'junegunn/goyo.vim'
 " You complete me - completion
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 " Color highlighting
 Plugin 'chriskempson/base16-vim'
 " Syntax Linting
@@ -214,7 +214,6 @@ endif
 
 " ALE (syntax checker)
 let g:ale_lint_on_text_changed = 'never'
-let g:ale_python_pylint_executable = 'pylint3'
 let g:ale_python_pylint_options = '--disable=missing-docstring --max-line-length=200'
 let g:ale_python_flake8_options = '--max-line-length 140 --ignore F405,E2,E3,E722'
 let g:ale_completion_enabled = 0
@@ -249,7 +248,8 @@ map <leader>g :YcmCompleter GoTo<CR>
 " Fugitive (Git Wrapper)
 " Open diffs in vertical splits
 set diffopt+=vertical
-nmap gs :Gstatus<cr>
+nmap gs :Git<cr>
+nmap gb :Git blame<cr>
 
 " Python
 au BufNewFile,BufRead *.py
