@@ -17,8 +17,6 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'L9'
 Plugin 'gcmt/taboo.vim'
 Plugin 'junegunn/goyo.vim'
-" You complete me - completion
-"Plugin 'Valloric/YouCompleteMe'
 " Color highlighting
 Plugin 'chriskempson/base16-vim'
 " Syntax Linting
@@ -236,14 +234,6 @@ let g:lightline = {
 
 " Taboo.vim
 map <leader>, :TabooRename
-
-" YouCompleteMe
-let g:python_host_prog = "/usr/bin/python2"
-let g:python3_host_prog = "/usr/bin/python3"
-let g:ycm_autoclose_preview_window_after_completion=1
-let g:ycm_server_python_interpreter = '/usr/bin/python3'
-let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
-map <leader>g :YcmCompleter GoTo<CR>
 
 " Fugitive (Git Wrapper)
 " Open diffs in vertical splits
