@@ -1,45 +1,21 @@
-vim.cmd([[
-" Set <LEADER>
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'L9'
-Plugin 'gcmt/taboo.vim'
-Plugin 'junegunn/goyo.vim'
-" Color highlighting
-Plugin 'chriskempson/base16-vim'
-" Syntax Linting
-Plugin 'w0rp/ale'
-" Simple statusline
-Plugin 'itchyny/lightline.vim'
-" All of tpope's greatest hits
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-unimpaired'
-" FZF
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-" Put your non-Plugin stuff after this line
-
-" ####################
-" BEGIN CUSTOM CONFIGS
-" ####################
-]])
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
+end
+vim.opt.rtp:prepend(lazypath)
+-- lazy.nvim is initialized at the end so all settings are taken into account
+-- when it is loaded
 
 
 -------------------
@@ -66,8 +42,8 @@ vim.opt.encoding = utf8
 vim.opt.ffs = unix,dos,mac
 
 -- Set indentation size and don't allow real tabs
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
 vim.opt.expandtab = true
 
 -- Configure backspace so it acts as it should act
@@ -92,30 +68,10 @@ vim.opt.list = false
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
-
-vim.cmd([[
-"""""""""""""""""""
-" Colors and Fonts
-"""""""""""""""""""
-" Enable syntax highlighting
-syntax enable
-syntax on
-
-set t_Co=256
-set background=dark
-
-set termguicolors
-
-colorscheme base16-eighties
-
-:hi TabLineFill ctermfg=Blue ctermbg=DarkGray
-:hi TabLine ctermfg=LightGray ctermbg=DarkGray
-:hi TabLineSel ctermfg=White ctermbg=Blue
-:hi Title ctermfg=DarkGray ctermbg=LightGray
-
-" Preserve Transparency on URxvt
-hi Normal guibg=NONE ctermbg=NONE
-]])
+-- Set up reasonable color settings for the nvim-base16 plugin that will be
+-- init-ed later
+vim.opt.syntax = "enable"
+vim.opt.termguicolors = true
 
 ----------
 -- Mapping
@@ -130,12 +86,11 @@ vim.keymap.set('', '<C-k>', '<C-W>k')
 vim.keymap.set('', '<C-h>', '<C-W>h')
 vim.keymap.set('', '<C-l>', '<C-W>l')
 
--- Move between tabs
-vim.keymap.set('', ']t', ':tabn<cr>')
-vim.keymap.set('', '[t', ':tabp<cr>')
-
 -- Press SPACE-s-s to toggle spell check
 vim.keymap.set('', '<leader>ss', ':setlocal spell!<cr>')
+
+-- Toggle comment
+vim.keymap.set('', '<leader>cc', 'gcc', {remap = true})
 
 ---------
 -- Events
@@ -156,42 +111,18 @@ vim.api.nvim_create_autocmd('BufReadPost', {
   end,
 })
 
------------------
--- Plugin Configs
------------------
--- Fuzzy finding
-vim.keymap.set('n', '<leader>f', ':Files<cr>')
-vim.keymap.set('n', '<leader>/', ':Rg <C-r><C-w><cr>')
 
--- Goyo (focus mode)
-vim.keymap.set('n', '<leader>z', ':Goyo<cr>')
-
--- Taboo (modify tabs easily)
-vim.keymap.set('n', '<leader>tr', ':TabooRename ')
-
--- Fugitive (Git Wrapper)
-vim.keymap.set('n', '<leader>gs', ':Git<cr>')
-vim.keymap.set('n', '<leader>gb', ':Git blame<cr>')
--- Open diffs in vertical splits
-vim.opt.viminfo:append({vertical})
-
-
-vim.cmd([[
-""""""""""""""""""
-" Plugin Config
-""""""""""""""""""
-" ALE (syntax checker)
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_python_pylint_options = '--disable=missing-docstring,invalid-name --max-line-length=200'
-let g:ale_python_flake8_options = '--max-line-length 140 --ignore F405,E2,E3,E722'
-let g:ale_completion_enabled = 0
-
-
-" Lightline
-let g:lightline = {
-\ 'colorscheme': 'wombat',
-\}
-
-" Neovim
-tnoremap <Esc> <C-\><C-n>
-]])
+-------------------
+-- Setup lazy.nvim
+-------------------
+require("lazy").setup({
+  spec = {
+    -- import your plugins
+    { import = "plugins" },
+  },
+  -- Configure any other settings here. See the documentation for more details.
+  -- colorscheme that will be used when installing plugins.
+  install = { colorscheme = { "habamax" } },
+  -- automatically check for plugin updates
+  checker = { enabled = true },
+})
