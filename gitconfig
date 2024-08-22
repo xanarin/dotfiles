@@ -1,6 +1,8 @@
 [user]
 	name = Will Sloan
 	email = will@848.email
+[commit]
+	verbose = true
 [push]
 	default = simple
 [alias]

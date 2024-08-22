@@ -86,7 +86,7 @@ export XDG_CURRENT_DESKTOP=gnome
 export EDITOR='nvim'
 
 # why not view our manpages in nvim?
-export MANPAGER="nvim -c 'set ft=man' -"
+export MANPAGER="nvim -c 'Man!' -"
 
 # alias common commands
 alias grep="grep --color=auto"
@@ -98,8 +98,11 @@ alias ip="ip -color=auto"
 # Linux-specific keyboard speed command
 alias fast="/usr/bin/xset r rate 200 40"
 
-# Add user pip3 installed packages to PATH
-export PATH="$PATH:$HOME/.local/bin"
+export GOPATH="$HOME/.local/share/go"
+
+# Add user-pip3 and golang installed packages to PATH
+export PATH="$PATH:$HOME/.local/bin:$GOPATH/bin"
+
 
 # Coloring
 eval `dircolors -b $HOME/.dir_colors`

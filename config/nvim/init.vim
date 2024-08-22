@@ -214,7 +214,7 @@ endif
 
 " ALE (syntax checker)
 let g:ale_lint_on_text_changed = 'never'
-let g:ale_python_pylint_options = '--disable=missing-docstring --max-line-length=200'
+let g:ale_python_pylint_options = '--disable=missing-docstring,invalid-name --max-line-length=200'
 let g:ale_python_flake8_options = '--max-line-length 140 --ignore F405,E2,E3,E722'
 let g:ale_completion_enabled = 0
 

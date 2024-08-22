@@ -12,10 +12,10 @@ set $right l
 # Your preferred terminal emulator
 set $term kitty
 # Your preferred application launcher
-set $menu rofi -show drun -font "Office Code Pro 14"
+set $menu rofi -show drun -font "Fira Code 11"
 
 # Font
-font pango:Office Code Pro 11
+font Fira Code 11
 
 ### Key bindings
 #
@@ -43,6 +43,9 @@ font pango:Office Code Pro 11
     bindsym $mod+$down focus down
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
+
+    # Select parent container
+    bindsym $mod+a focus parent
 
     # _move_ the focused window with the same, but add Shift
     bindsym $mod+Shift+$left move left
@@ -169,8 +172,8 @@ bindsym XF86AudioRaiseVolume  exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume  exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute         exec pactl set-sink-mute   @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute      exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym XF86MonBrightnessUp   exec brightlight -p -i 10
-bindsym XF86MonBrightnessDown exec brightlight -p -d 10
+bindsym XF86MonBrightnessUp   exec brightnessctl set 5%+
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 
 
 bindsym $mod+Escape exec swaylock
@@ -178,22 +181,17 @@ bindsym $mod+Escape exec swaylock
 #
 # Keyboard Options
 #
-input 1:1:AT_Translated_Set_2_keyboard {
+input type:keyboard {
     xkb_options caps:escape
     repeat_delay 200
     repeat_rate 40
 }
 
-input 1133:4132:Logitech_M310 {
-    accel_profile flat
-    pointer_accel 0.5
-}
-
-input 2:7:SynPS/2_Synaptics_TouchPad {
-    dwt enabled
-}
-
-input 2:10:TPPS/2_IBM_TrackPoint {
+input type:touchpad {
+    accel_profile adaptive
+    scroll_factor 0.4
+    natural_scroll enabled
+    tap enabled
     dwt enabled
 }
 
@@ -204,12 +202,16 @@ output eDP-1 background ~/Pictures/wallpaper/epcot_small.png center
 
 # Set up display warming
 exec --no-startup-id gammastep
+
 # Set up notifications
 exec --no-startup-id mako
 
 # Set up idle and sleep screen locking
 exec --no-startup-id /usr/bin/swayidle -w \
-         before-sleep 'swaylock -f' \
-         timeout 600 'swaylock -f'
+         timeout 600 'swaylock -f' \
+         timeout 660 'swaymsg "output * dpms off"' \
+             resume 'swaymsg "output * dpms on"' \
+         before-sleep 'swaylock -f'
+
 # Set up polkit daemon
 exec --no-startup-id /usr/bin/lxpolkit
