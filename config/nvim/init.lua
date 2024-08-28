@@ -92,6 +92,10 @@ vim.keymap.set('', '<leader>ss', ':setlocal spell!<cr>')
 -- Toggle comment
 vim.keymap.set('', '<leader>cc', 'gcc', {remap = true})
 
+-- Move between tabs more easily
+vim.keymap.set('', ']t', 'gt')
+vim.keymap.set('', '[t', 'gT')
+
 ---------
 -- Events
 ---------
