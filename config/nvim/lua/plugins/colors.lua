@@ -1,6 +1,6 @@
 return {
   {"nvim-base16",
-    url = "https://github.com/RRethy/base16-nvim.git",
+    url = "https://github.com/RRethy/base16-nvim",
     lazy = false, -- We need this from the very beginning
     priority = 1000,
     config = function()
