@@ -1,8 +1,6 @@
 [user]
 	name = Will Sloan
 	email = will@848.email
-[commit]
-	verbose = true
 [push]
 	default = simple
 [alias]
@@ -18,3 +16,12 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+[commit]
+    # Show the diff when writing the commit message
+    verbose = true
+[protocol "file"]
+	allow = always
+[init]
+	defaultBranch = main
+[merge]
+	conflictStyle = zdiff3

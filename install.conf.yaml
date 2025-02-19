@@ -27,10 +27,4 @@
     ~/.zshrc: zshrc
 
 - shell: 
-    - 
-      # If Vundle is already present don't kill the install
-      command: git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim || exit 0
-      description: Install Vundle for neovim
-      stderr: false
-    - [nvim +PluginInstall +qall, Install neovim plugins]
     - [./oh_my_zsh_install.sh, Install Oh My ZSH]

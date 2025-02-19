@@ -68,6 +68,10 @@ source $ZSH/oh-my-zsh.sh
 HISTSIZE=999999999
 SAVEHIST=$HISTSIZE
 
+# export all wd aliases as '~alias' (ZSH calls them "static named directories")
+export WD_EXPORT=yesplease
+wd export
+
 #
 ## User configuration
 #
@@ -80,13 +84,24 @@ export LANG=en_US.utf-8
 export LC_ALL=en_US.utf-8
 
 # Set fake "window manager" to make IDA inherit gtk+2 theme
-export XDG_CURRENT_DESKTOP=gnome
+#export XDG_CURRENT_DESKTOP=gnome
 
 # make sure we're always editing in vim #vimmasterrace
 export EDITOR='nvim'
 
-# why not view our manpages in nvim?
-export MANPAGER="nvim -c 'Man!' -"
+# why not view our manpages in bat?
+if bat -V >/dev/null 2>&1; then
+  export MANPAGER='sh -c "col -bx | bat -l man -p"'
+elif batcat -V >/dev/null 2>&1; then
+  # Stupid debian calls it batcat by default
+  export MANPAGER='sh -c "col -bx | batcat -l man -p"'
+else
+  # no bat so we have to use less
+  export MANPAGER="less -F"
+fi
+
+# Set GOPATH
+export GOPATH="$HOME/.local/lib/go"
 
 # alias common commands
 alias grep="grep --color=auto"
@@ -95,14 +110,8 @@ alias watch="watch -n1"
 alias ls="ls --color -lh"
 alias ip="ip -color=auto"
 
-# Linux-specific keyboard speed command
-alias fast="/usr/bin/xset r rate 200 40"
-
-export GOPATH="$HOME/.local/share/go"
-
-# Add user-pip3 and golang installed packages to PATH
-export PATH="$PATH:$HOME/.local/bin:$GOPATH/bin"
-
+# Add user-mode pip3 installed packages and Go packages to PATH
+export PATH="$PATH:$HOME/.local/bin:$HOME/.local/lib/go/bin"
 
 # Coloring
 eval `dircolors -b $HOME/.dir_colors`
@@ -137,3 +146,15 @@ alias bzr=true
 # errant TERM value will cause programs to misbehave (because they think we're
 # running a terminal from 1982). This 'export' should fix us back up in that case.
 export TERM=xterm-256color
+
+#
+## User-defined functions
+#
+
+# Get short git HEAD commit ID
+alias ghd='git rev-parse --short HEAD'
+
+function enterns() {
+    [ $# -ne 1 ] && echo "Usage: enterns NETNS_NAME" && return 1
+    sudo -E ip netns exec "$1" runuser --pty --preserve-environment "$USER"
+}

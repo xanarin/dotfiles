@@ -90,7 +90,7 @@ vim.keymap.set('', '<C-l>', '<C-W>l')
 vim.keymap.set('', '<leader>ss', ':setlocal spell!<cr>')
 
 -- Toggle comment
-vim.keymap.set('', '<leader>cc', 'gcc', {remap = true})
+vim.keymap.set('', '<leader>cc', 'gcc<esc>', {remap = true})
 
 -- Move between tabs more easily
 vim.keymap.set('', ']t', 'gt')
@@ -128,5 +128,5 @@ require("lazy").setup({
   -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "habamax" } },
   -- automatically check for plugin updates
-  checker = { enabled = true },
+  checker = { enabled = false },
 })

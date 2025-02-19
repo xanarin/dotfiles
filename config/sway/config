@@ -13,7 +13,10 @@ set $term kitty
 set $menu rofi -show drun -font "Fira Code 11"
 
 # Font
-font Fira Code 11
+font pango:Fira Code 11
+
+### Import system sway configuration to fix issues with xdg-desktop-portal
+include /etc/sway/config.d/*
 
 ### Key bindings
 #
@@ -210,7 +213,11 @@ input type:touchpad {
 #
 # Output Options
 #
-output eDP-1 background ~/Pictures/wallpaper/epcot_small.png center
+#output eDP-1 background ~/Pictures/wallpaper/epcot_small.png center
+#output HDMI-A-1 pos 0 0
+#output HDMI-A-2 pos 1920 -370
+#output HDMI-A-2 transform 270
+#output * background ~/Pictures/ghibli-forest.jpg fit
 
 # Set up display warming
 exec --no-startup-id gammastep

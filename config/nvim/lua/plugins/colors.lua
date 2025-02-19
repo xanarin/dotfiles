@@ -5,7 +5,7 @@ return {
     priority = 1000,
     config = function()
         -- set the colorscheme
-        vim.cmd('colorscheme base16-eighties')
+        vim.cmd('colorscheme base16-google-dark')
     end,
   },
   {"lightline",
