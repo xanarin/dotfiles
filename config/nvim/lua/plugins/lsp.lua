@@ -53,6 +53,11 @@ return {
       local lsp_attach = function(client, bufnr)
         local opts = {buffer = bufnr}
 
+        local filetype = vim.api.nvim_buf_get_option(bufnr, 'filetype')
+        if filetype == "lua" or filetype == "go" then
+          lsp_zero.buffer_autoformat()
+        end
+
         vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
         vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
         vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
@@ -71,9 +76,12 @@ return {
         capabilities = require('cmp_nvim_lsp').default_capabilities()
       })
 
-      -- TODO: Add more language servers as they are installed on the system
-      require('lspconfig').gopls.setup({})
-      require('lspconfig').pylsp.setup({})
+      -- Enable these LSPs as they are available on your system
+      -- require('lspconfig').gopls.setup({})
+      -- require('lspconfig').pylsp.setup({})
+      -- require('lspconfig').clangd.setup({})
+      -- require('lspconfig').gitlab_ci_ls.setup({})
+      -- require('lspconfig').efm.setup({})
     end
   },
 }

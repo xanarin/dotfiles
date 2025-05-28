@@ -103,6 +103,9 @@ fi
 # Set GOPATH
 export GOPATH="$HOME/.local/lib/go"
 
+# Include rusty things
+source "$HOME/.cargo/env"
+
 # alias common commands
 alias grep="grep --color=auto"
 alias ip="ip --color"
@@ -157,4 +160,22 @@ alias ghd='git rev-parse --short HEAD'
 function enterns() {
     [ $# -ne 1 ] && echo "Usage: enterns NETNS_NAME" && return 1
     sudo -E ip netns exec "$1" runuser --pty --preserve-environment "$USER"
+}
+
+function mksha() {
+    fd . -tf -E 'SHA256SUM' -X sha256sum > SHA256SUM
+}
+
+function tea() {
+    [ $# -ne 1 ] && { echo -e "Usage: tea DURATION\n\tDURATION: Timespec compatible with sleep(1), e.g., 3m" ; return 1 ; }
+    ((sleep "$1" && {notify-send "Hey, time to pull out the teabag"; mpv /home/wsloan/Music/timer.mp3; printf "Take the teabag out"}) </dev/null >/dev/null 2>&1 &)
+}
+
+function remind() {
+  [ $# -ne 1 ] && { echo -e "Usage: remind DURATION\n\tDURATION: Timespec compatible with sleep(1), e.g., 3m" ; return 1 ; }
+  ((sleep "$1" && {
+    notify-send --urgency=critical "Hey, TIME TO GO!!!";
+    mpv --volume=140 --loop=inf /home/wsloan/Music/alarm.ogg &
+    printf "Take the teabag out"
+  }) </dev/null >/dev/null 2>&1 &)
 }

@@ -73,6 +73,13 @@ vim.opt.splitright = true
 vim.opt.syntax = "enable"
 vim.opt.termguicolors = true
 
+-- Set up custom filetypes
+vim.filetype.add({
+  filename = {
+    [".gitlab-ci.yml"] = "yaml.gitlab"
+  }
+})
+
 ----------
 -- Mapping
 ----------
