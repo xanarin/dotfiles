@@ -6,3 +6,4 @@
 
 # Ignore custom spelling lists
 config/nvim/spell/
+config/nvim/doc/**/tags

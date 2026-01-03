@@ -176,8 +176,8 @@ bindsym XF86AudioRaiseVolume  exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume  exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute         exec pactl set-sink-mute   @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute      exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym XF86MonBrightnessUp   exec brightlight -p -i 10
-bindsym XF86MonBrightnessDown exec brightlight -p -d 10
+bindsym XF86MonBrightnessUp   exec brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
 bindsym XF86AudioPlay         exec playerctl play-pause
 bindsym XF86AudioPrev         exec playerctl previous
 bindsym XF86AudioNext         exec playerctl next
@@ -218,6 +218,7 @@ input type:touchpad {
 #output HDMI-A-2 pos 1920 -370
 #output HDMI-A-2 transform 270
 #output * background ~/Pictures/ghibli-forest.jpg fit
+output eDP-1 background ~/Pictures/wallpaper/epcot_small.png center
 
 # Set up display warming
 exec --no-startup-id gammastep
@@ -237,3 +238,6 @@ exec --no-startup-id /usr/bin/lxpolkit
 
 # Start necessary desktop applications
 exec /opt/enpass/Enpass
+
+# Include necessary system support files so things like xdg-desktop-portal-gtk work correctly
+include /etc/sway/config.d/*

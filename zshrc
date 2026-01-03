@@ -19,6 +19,11 @@ open() {
   "
 }
 
+copy() {
+  # TODO: detect whether xsel or wl-copy should be used
+  tr -d '\r\n' | wl-copy
+}
+
 #
 ## Oh-My-Zsh Configuration
 #
@@ -83,8 +88,8 @@ setopt nonomatch
 export LANG=en_US.utf-8
 export LC_ALL=en_US.utf-8
 
-# Set fake "window manager" to make IDA inherit gtk+2 theme
-#export XDG_CURRENT_DESKTOP=gnome
+# Time to be honest in case anyone has workarounds for sway
+export XDG_CURRENT_DESKTOP=sway
 
 # make sure we're always editing in vim #vimmasterrace
 export EDITOR='nvim'
