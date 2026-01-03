@@ -19,6 +19,11 @@ open() {
   "
 }
 
+copy() {
+  # TODO: detect whether xsel or wl-copy should be used
+  tr -d '\r\n' | wl-copy
+}
+
 #
 ## Oh-My-Zsh Configuration
 #
@@ -80,13 +85,16 @@ export LANG=en_US.utf-8
 export LC_ALL=en_US.utf-8
 
 # Set fake "window manager" to make IDA inherit gtk+2 theme
-export XDG_CURRENT_DESKTOP=gnome
+export XDG_CURRENT_DESKTOP=sway
 
 # make sure we're always editing in vim #vimmasterrace
 export EDITOR='nvim'
 
-# why not view our manpages in nvim?
-export MANPAGER="nvim -c 'Man!' -"
+# why not view our manpages in bat?
+if command -v bat &> /dev/null; then
+export MANROFFOPT="-c"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+fi
 
 # alias common commands
 alias grep="grep --color=auto"
