@@ -73,7 +73,27 @@ return {
 
       -- TODO: Add more language servers as they are installed on the system
       require('lspconfig').gopls.setup({})
-      require('lspconfig').pylsp.setup({})
+      require('lspconfig').pylsp.setup({
+        settings = {
+            pylsp = {
+              plugins = {
+                pycodestyle = {
+                  ignore = {'W391'},
+                  maxLineLength = 120
+                }
+              }
+            }
+          }
+      })
+      require('lspconfig').rust_analyzer.setup({
+        settings = {
+          ['rust-analyzer'] = {
+            diagnostics = {
+              enable = false;
+            }
+          }
+        }
+      })
     end
   },
 }
