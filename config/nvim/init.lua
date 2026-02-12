@@ -80,6 +80,9 @@ vim.filetype.add({
   }
 })
 
+-- Show diagnostics inline
+vim.diagnostic.config({virtual_lines = true, virtual_text = true})
+
 ----------
 -- Mapping
 ----------

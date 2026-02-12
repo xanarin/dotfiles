@@ -16,6 +16,14 @@ set $menu rofi -show drun -font "Liberation Mono 12"
 # Your preferred way to lock the screen
 set $locker /home/will/.scripts/lock.sh
 
+
+# Lock with Alt+Escape
+bindsym $mod+Escape exec $locker
+
+# Sleep with Alt+Delete
+bindsym $mod+Delete exec --no-startup-id $locker && systemctl suspend
+
+
 ### Key bindings
 #
 # Basics:
@@ -130,7 +138,7 @@ set $locker /home/will/.scripts/lock.sh
 #new_window 1pixel
 for_window [class="^.*"] border pixel 4
 # This will only work on i3-gaps, which is not available in Debian buster
-#gaps inner 30
+gaps inner 10
 
 #
 # Colors
@@ -174,9 +182,6 @@ bindsym XF86AudioPrev exec /usr/bin/playerctl --player=spotify previous
 
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-
-bindsym $mod+Escape exec $locker
-
 #
 # i3bar (status bar)
 #
@@ -202,6 +207,8 @@ exec_always --no-startup-id /usr/bin/setxkbmap -layout us -option caps:escape
 # Set key repeat delay and speed
 exec_always --no-startup-id /usr/bin/xset r rate 200 40
 # Set wallpaper
-#exec --no-startup-id /usr/bin/feh --bg-fill ~/.scripts/current_wallpaper
+exec --no-startup-id /usr/bin/feh --bg-fill ~/.scripts/current_wallpaper
 # Start up .desktop autostart files
 exec --no-startup-id dex -a -s /etc/i3/autostart
+# Start lightweight compositor
+exec --no-startup-id /usr/bin/picom --backend xrender

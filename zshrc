@@ -109,7 +109,8 @@ fi
 export GOPATH="$HOME/.local/lib/go"
 
 # Include rusty things
-source "$HOME/.cargo/env"
+CARGO_DIR="$HOME/.cargo"
+[ -d "$CARGO_DIR" ] && source "$CARGO_DIR/env"
 
 # alias common commands
 alias grep="grep --color=auto"

@@ -77,6 +77,15 @@ return {
       })
 
       -- Enable these LSPs as they are available on your system
+      -- require('lspconfig').rust_analyzer.setup({
+      --   settings = {
+      --     ['rust-analyzer'] = {
+      --       diagnostics = {
+      --         enable = true;
+      --       }
+      --     }
+      --   }
+      -- })
       -- require('lspconfig').gopls.setup({})
       -- require('lspconfig').pylsp.setup({})
       -- require('lspconfig').clangd.setup({})
