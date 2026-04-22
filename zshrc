@@ -20,8 +20,13 @@ open() {
 }
 
 copy() {
-  # TODO: detect whether xsel or wl-copy should be used
-  tr -d '\r\n' | wl-copy
+  if command -v xsel >/dev/null; then
+    tr -d '\r\n' | tee >(xsel -ip) | xsel -ib
+  elif command -v wl-copy >/dev/null; then
+    tr -d '\r\n' | wl-copy
+  else
+    echo "ERROR: No copy utility installed"
+  fi
 }
 
 #
@@ -96,8 +101,11 @@ export EDITOR='nvim'
 
 # why not view our manpages in bat?
 if bat -V >/dev/null 2>&1; then
+  # The MANOFFOPT is required on newer versions (Debian 13+)
+  export MANOFFOPT='-c'
   export MANPAGER='sh -c "col -bx | bat -l man -p"'
 elif batcat -V >/dev/null 2>&1; then
+  export MANOFFOPT='-c'
   # Stupid debian calls it batcat by default
   export MANPAGER='sh -c "col -bx | batcat -l man -p"'
 else
@@ -143,6 +151,9 @@ if [[ -e /etc/grc.zsh ]]; then
                                  # Fedora with ZSH the file is not always sourced
 fi
 
+# If there exists a secrets file, import it (but never commit it to Git)
+[ -f ~/.zsh_secrets ] && . ~/.zsh_secrets
+
 #
 ## tweaks/hacks
 #
@@ -162,6 +173,15 @@ export TERM=xterm-256color
 
 # Get short git HEAD commit ID
 alias ghd='git rev-parse --short HEAD'
+
+# Get "authoritative version" git info
+alias gda='git describe --abbrev=8 --tags --dirty --always'
+
+# Reset to upstream branch without changing file contents
+alias gro='git reset --mixed "origin/$(git_current_branch)"'
+
+# Make gitlab-art do all of its tasks in one command
+alias art3="art update && art download && art install"
 
 function enterns() {
     [ $# -ne 1 ] && echo "Usage: enterns NETNS_NAME" && return 1
